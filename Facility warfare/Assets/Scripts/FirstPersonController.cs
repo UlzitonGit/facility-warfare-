@@ -29,7 +29,8 @@ public class FirstPersonController : MonoBehaviour
     public bool cameraCanMove = true;
     public float mouseSensitivity = 2f;
     public float maxLookAngle = 50f;
-
+    [SerializeField] float qeSpeed = 3;
+    [SerializeField] Transform QE;
     // Crosshair
     public bool lockCursor = true;
     public bool crosshair = true;
@@ -176,6 +177,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
+       
         #region Camera
         if (onzipline == true && Input.GetKeyDown(jumpKey))
         {
@@ -205,7 +207,7 @@ public class FirstPersonController : MonoBehaviour
             transform.localEulerAngles = new Vector3(0, yaw, 0);
             playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
         }
-
+       
         #region Camera Zoom
 
         if (enableZoom)
