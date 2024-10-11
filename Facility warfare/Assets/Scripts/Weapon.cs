@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private ParticleSystem hitEffect;
     [SerializeField] private Animator weaponAnimation;
     [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip shootSoundReverb;
     [SerializeField] float aimSmooth = 0.000000000001f;
     private int ammo = 0;
     private AudioSource aud;
@@ -30,21 +31,30 @@ public class Weapon : MonoBehaviour
     [SerializeField] Vector3 semiAimPos;
     [SerializeField] Quaternion semiAimRot;
     [SerializeField] Vector3 armPos;
+    float delayWeapon = 0.1f;
+    bool delaying = false;
     bool aimSwitch = true;
+    int shootingRate = 0;
+    [SerializeField] float delayedShootRate = 0.017f;
    
     #endregion
     // Start is called before the first frame update
     void Start()
     {
         aud = GetComponent<AudioSource>();
-        ammo = maxAmmo;
-     
-       
+        ammo = maxAmmo;       
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(delaying == true && delayWeapon > 0)
+        {
+            delayWeapon -= delayedShootRate;
+        }
+        if (delayWeapon <= 0 && delaying == true) PlaySound();
+        if (shootingRate >= 2) PlaySoundShorty();
+        
         if (Input.GetKey(KeyCode.Mouse2) && aimSwitch)
         {
             isSemiAiming = isSemiAiming == false;
@@ -75,12 +85,29 @@ public class Weapon : MonoBehaviour
             isAiming = false;
         }
     }
+    public void PlaySound()
+    {
+        delaying = false;
+        aud.PlayOneShot(shootSoundReverb);
+        shootingRate = 0;
+        
+    }
+    public void PlaySoundShorty()
+    {
+        
+        aud.PlayOneShot(shootSound);
+        shootingRate -= 1;
+
+    }
     #region Shooting&Reloading
     private void Shoot()
     {
         if(canShoot == false || ammo <= 0) return;
         ammo -= 1;
-        aud.PlayOneShot(shootSound);
+        shootingRate++;
+        delaying = true;
+        
+        delayWeapon = 0.1f;
         weaponAnimation.SetTrigger("Shoot");
         muzzleFireEffect.Play();
         StartCoroutine(DelayBS());
@@ -90,6 +117,10 @@ public class Weapon : MonoBehaviour
         if(Physics.Raycast(shootPoint.transform.position, shootPoint.transform.forward, out hit))
         {
             Debug.Log(hit.transform.name);
+            if(hit.transform.GetComponent<Destroyable>() != null )
+            {
+                hit.transform.GetComponent<Destroyable>().Destory();
+            }
             Instantiate(hitEffect.gameObject, hit.point, Quaternion.LookRotation(hit.normal));
         }
         if (ammo == 0) StartCoroutine(Reload());

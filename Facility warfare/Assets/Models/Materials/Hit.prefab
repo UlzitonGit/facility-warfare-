@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 841028040388578322}
   - component: {fileID: 354063401412810027}
   - component: {fileID: 8153248926816164633}
+  - component: {fileID: 7938144087894891691}
   m_Layer: 0
   m_Name: Hit
   m_TagString: Untagged
@@ -5010,3 +5011,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7938144087894891691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5905798076831148605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc7e4975a199b043bade9c4b0706c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
