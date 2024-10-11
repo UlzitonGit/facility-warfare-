@@ -148,4 +148,18 @@ public class Weapon : MonoBehaviour
         aimSwitch = true;
     }
     #endregion
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Wall"))
+        {
+            weaponAnimation.SetBool("Wall", true);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Wall"))
+        {
+            weaponAnimation.SetBool("Wall", false);
+        }
+    }
 }
