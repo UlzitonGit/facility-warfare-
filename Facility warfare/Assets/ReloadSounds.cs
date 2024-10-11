@@ -2,15 +2,25 @@ using UnityEngine;
 
 public class ReloadSounds : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip outMag;
+    [SerializeField] AudioClip inMag;
+    [SerializeField] AudioClip slider;
+    [SerializeField] AudioClip magDrop;
+    public void MagIN()
     {
-        
+        aud.PlayOneShot(inMag);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void MagOut()
     {
-        
+        aud.PlayOneShot(outMag);
+    }
+    public void Slider()
+    {
+        aud.PlayOneShot(slider);
+    }
+    public void MagDrop()
+    {
+        aud.PlayOneShot(magDrop);
     }
 }

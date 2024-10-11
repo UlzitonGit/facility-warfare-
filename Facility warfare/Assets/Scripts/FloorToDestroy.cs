@@ -5,11 +5,14 @@ public class FloorToDestroy : MonoBehaviour
 {
     [SerializeField] Rigidbody[] rb;
     [SerializeField] ParticleSystem part;
+    [SerializeField] AudioClip audioClip;
+    AudioSource audioSource;
     public int toDestroy = 4;
     bool destroy = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioSource = FindAnyObjectByType<AudioSource>();
         rb = GetComponentsInChildren<Rigidbody>();
     }
 
@@ -20,6 +23,7 @@ public class FloorToDestroy : MonoBehaviour
         {
             destroy = true;
             part.Play();
+            audioSource.PlayOneShot(audioClip);
             for (int i = 0; i < rb.Length; i++)
             {
                 

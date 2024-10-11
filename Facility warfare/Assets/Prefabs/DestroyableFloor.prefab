@@ -10585,6 +10585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: []
   part: {fileID: 7019780169234577581}
+  audioClip: {fileID: 8300000, guid: 71d07f6918c83274aaa982a17e0bd0b2, type: 3}
   toDestroy: 1
 --- !u!1 &7611862039200274964
 GameObject:
