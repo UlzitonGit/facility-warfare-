@@ -16,10 +16,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] private ParticleSystem hitEffect;
     [SerializeField] private Animator weaponAnimation;
     [SerializeField] private AudioClip shootSound;
-    [SerializeField] private AudioClip shootSoundReverb;
+    [SerializeField] private AudioClip mechanicSound;
     [SerializeField] float aimSmooth = 0.000000000001f;
     private int ammo = 0;
-    private AudioSource aud;
+    [SerializeField] private AudioSource aud;
+    [SerializeField] private AudioSource _mechanicaud;
     public bool isAiming = false;
     public bool isSemiAiming = false;
     bool isReloading = false;
@@ -35,6 +36,8 @@ public class Weapon : MonoBehaviour
     bool delaying = false;
     bool aimSwitch = true;
     int shootingRate = 0;
+    float minusVolume = 1;
+    float mechanicMixer = 0;
     [SerializeField] float delayedShootRate = 0.017f;
    
     #endregion
@@ -48,12 +51,6 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(delaying == true && delayWeapon > 0)
-        {
-            delayWeapon -= delayedShootRate;
-        }
-        if (delayWeapon <= 0 && delaying == true) PlaySound();
-        if (shootingRate >= 2) PlaySoundShorty();
         
         if (Input.GetKey(KeyCode.Mouse2) && aimSwitch)
         {
@@ -87,18 +84,18 @@ public class Weapon : MonoBehaviour
     }
     public void PlaySound()
     {
-        delaying = false;
-        aud.PlayOneShot(shootSoundReverb);
-        shootingRate = 0;
-        
-    }
-    public void PlaySoundShorty()
-    {
         
         aud.PlayOneShot(shootSound);
-        shootingRate -= 1;
-
+        minusVolume -= 0.03f;
+        aud.volume = minusVolume;
+        if(ammo <= 15)
+        {
+            mechanicMixer += 0.07f;
+            _mechanicaud.volume = mechanicMixer;
+            _mechanicaud.PlayOneShot(mechanicSound);
+        }
     }
+   
     #region Shooting&Reloading
     private void Shoot()
     {
@@ -106,7 +103,7 @@ public class Weapon : MonoBehaviour
         ammo -= 1;
         shootingRate++;
         delaying = true;
-        
+        PlaySound();
         delayWeapon = 0.1f;
         weaponAnimation.SetTrigger("Shoot");
         muzzleFireEffect.Play();
@@ -127,6 +124,8 @@ public class Weapon : MonoBehaviour
     }
     IEnumerator Reload()
     {
+        mechanicMixer = 0;
+        minusVolume = 1;
         isReloading = true;
         weaponAnimation.SetTrigger("Reload");
         ammo = 0;
