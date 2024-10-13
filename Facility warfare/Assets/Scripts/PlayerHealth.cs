@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
         {
             if(isLocalPlayer)
                 RoomMananger._instance.RespawnPlayer();
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }

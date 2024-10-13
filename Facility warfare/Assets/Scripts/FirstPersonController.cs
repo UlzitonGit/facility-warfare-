@@ -120,7 +120,7 @@ public class FirstPersonController : MonoBehaviour
     // Internal Variables
     private bool isCrouched = false;
     private Vector3 originalScale;
-
+    [SerializeField] GameObject graphic;
     #endregion
     #endregion
 
@@ -161,7 +161,7 @@ public class FirstPersonController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
-
+        graphic.SetActive(false); 
       
         
         #region Sprint Bar
@@ -304,7 +304,7 @@ public class FirstPersonController : MonoBehaviour
         #region Jump
 
         // Gets input and calls jump method
-        if (jumpCount > 1 && Input.GetKeyDown(jumpKey))
+        if (isGrounded == true && Input.GetKeyDown(jumpKey))
         {
             Jump();
         }
@@ -377,7 +377,7 @@ public class FirstPersonController : MonoBehaviour
                 Vector3 velocityChange = (targetVelocity - velocity);
                 velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
                 velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-                velocityChange.y = 0;
+               // velocityChange.y = 0;
 
                 // Player is only moving when valocity change != 0
                 // Makes sure fov change only happens during movement
@@ -429,7 +429,7 @@ public class FirstPersonController : MonoBehaviour
         {
             Debug.DrawRay(origin, direction * distance, Color.red);
             isGrounded = true;
-            jumpCount = 1;
+            jumpCount = 2;
         }
         else
         {

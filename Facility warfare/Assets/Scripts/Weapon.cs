@@ -121,18 +121,13 @@ public class Weapon : MonoBehaviour
             if (hit.transform.GetComponent<PlayerHealth>())
             {
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, 35);
-                StartCoroutine(HitMarker());
+               
             }
             PhotonNetwork.Instantiate(hitEffect.name, hit.point, Quaternion.LookRotation(hit.normal));
         }
         if (ammo == 0) StartCoroutine(Reload());
     }
-    IEnumerator HitMarker()
-    {
-        hitMarker.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
-        hitMarker.SetActive(false);
-    }
+   
     IEnumerator Reload()
     {
         mechanicMixer = 0;
