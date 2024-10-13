@@ -31,6 +31,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Vector3 semiAimPos;
     [SerializeField] Quaternion semiAimRot;
     [SerializeField] Vector3 armPos;
+    [SerializeField] GameObject hitMarker;
     float delayWeapon = 0.1f;
     bool delaying = false;
     bool aimSwitch = true;
@@ -52,7 +53,10 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        if (Input.GetKey(KeyCode.R) && isReloading == false)
+        {
+            StartCoroutine(Reload());
+        }
         if (Input.GetKey(KeyCode.Mouse2) && aimSwitch)
         {
             isSemiAiming = isSemiAiming == false;
@@ -100,6 +104,7 @@ public class Weapon : MonoBehaviour
        
         delayWeapon = 0.1f;
         weaponAnimation.SetTrigger("Shoot");
+        
         muzzleFireEffect.Play();
         StartCoroutine(DelayBS());
         recoilScriptCamera.RecoilFire();
@@ -116,21 +121,31 @@ public class Weapon : MonoBehaviour
             if (hit.transform.GetComponent<PlayerHealth>())
             {
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, 35);
+                StartCoroutine(HitMarker());
             }
             PhotonNetwork.Instantiate(hitEffect.name, hit.point, Quaternion.LookRotation(hit.normal));
         }
         if (ammo == 0) StartCoroutine(Reload());
+    }
+    IEnumerator HitMarker()
+    {
+        hitMarker.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        hitMarker.SetActive(false);
     }
     IEnumerator Reload()
     {
         mechanicMixer = 0;
         minusVolume = 1;
         isReloading = true;
+        weaponAnimation.SetBool("IsReloading", true);
         weaponAnimation.SetTrigger("Reload");
         ammo = 0;
         canShoot = false;
         yield return new WaitForSeconds(reloadTime);
         ammo = maxAmmo;
+        canShoot=true;
+        weaponAnimation.SetBool("IsReloading", false);
         ammoText.text = "ammo: " + ammo.ToString();
         isReloading = false;
     }

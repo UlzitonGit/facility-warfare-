@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 
@@ -12,6 +13,6 @@ public class Destroy : MonoBehaviour
     IEnumerator Destroying()
     {
         yield return new WaitForSeconds(1);
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 }
