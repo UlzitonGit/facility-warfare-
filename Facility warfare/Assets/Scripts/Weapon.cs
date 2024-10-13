@@ -1,6 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -20,7 +19,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] float aimSmooth = 0.000000000001f;
     private int ammo = 0;
     [SerializeField] private AudioSource aud;
-    [SerializeField] private AudioSource _mechanicaud;
     public bool isAiming = false;
     public bool isSemiAiming = false;
     bool isReloading = false;
@@ -39,13 +37,15 @@ public class Weapon : MonoBehaviour
     float minusVolume = 1;
     float mechanicMixer = 0;
     [SerializeField] float delayedShootRate = 0.017f;
+    private TextMeshProUGUI ammoText;
    
     #endregion
     // Start is called before the first frame update
     void Start()
     {
-        aud = GetComponent<AudioSource>();
-        ammo = maxAmmo;       
+        ammo = maxAmmo;
+        ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<TextMeshProUGUI>();
+        ammoText.text = ammo.ToString();
     }
 
     // Update is called once per frame
@@ -84,16 +84,16 @@ public class Weapon : MonoBehaviour
     }
     public void PlaySound()
     {
-        
         aud.PlayOneShot(shootSound);
-        minusVolume -= 0.03f;
-        aud.volume = minusVolume;
-        if(ammo <= 15)
-        {
-            mechanicMixer += 0.07f;
-            _mechanicaud.volume = mechanicMixer;
-            _mechanicaud.PlayOneShot(mechanicSound);
-        }
+        
+        //minusVolume -= 0.03f;
+        //aud.volume = minusVolume;
+        //if(ammo <= 5)
+        //{
+            //mechanicMixer += 0.07f;
+            //_mechanicaud.volume = mechanicMixer;
+            //_mechanicaud.PlayOneShot(mechanicSound);
+        //}
     }
    
     #region Shooting&Reloading
@@ -110,6 +110,7 @@ public class Weapon : MonoBehaviour
         StartCoroutine(DelayBS());
         recoilScriptCamera.RecoilFire();
         recoilScriptWeapon.RecoilFire();
+        ammoText.text = ammo.ToString();
         RaycastHit hit;
         if(Physics.Raycast(shootPoint.transform.position, shootPoint.transform.forward, out hit))
         {
@@ -132,6 +133,7 @@ public class Weapon : MonoBehaviour
         canShoot = false;
         yield return new WaitForSeconds(reloadTime);
         ammo = maxAmmo;
+        ammoText.text = ammo.ToString();
         isReloading = false;
     }
     IEnumerator DelayBS()
