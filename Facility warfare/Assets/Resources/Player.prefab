@@ -1588,6 +1588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 2833729745403471110}
   camera: {fileID: 8601889074490226467}
+  graphic: {fileID: 7579530285163615868}
 --- !u!114 &5783407857215375455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1743,14 +1744,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7579530285163615868}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1186836411242278905}
   m_Father: {fileID: 6046076001096278172}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &5889367113539591570
 MeshFilter:
   m_ObjectHideFlags: 0

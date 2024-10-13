@@ -161,7 +161,7 @@ public class FirstPersonController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
-        graphic.SetActive(false); 
+        
       
         
         #region Sprint Bar
@@ -429,7 +429,7 @@ public class FirstPersonController : MonoBehaviour
         {
             Debug.DrawRay(origin, direction * distance, Color.red);
             isGrounded = true;
-            jumpCount = 2;
+            
         }
         else
         {
