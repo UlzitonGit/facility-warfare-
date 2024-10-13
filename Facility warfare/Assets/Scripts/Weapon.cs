@@ -13,7 +13,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private KeyCode shootKey = KeyCode.Mouse0;
     [SerializeField] private ParticleSystem muzzleFireEffect;
     [SerializeField] private ParticleSystem hitEffect;
-   
+    [SerializeField] AudioClip hitSfx;
+    [SerializeField] AudioSource aud;
     [SerializeField] private Animator weaponAnimation;
     [SerializeField] LayerMask toIgnore;
     [SerializeField] float aimSmooth = 0.000000000001f;
@@ -121,7 +122,7 @@ public class Weapon : MonoBehaviour
             if (hit.transform.GetComponent<PlayerHealth>())
             {
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, 35);
-               
+                aud.PlayOneShot(hitSfx);
             }
             PhotonNetwork.Instantiate(hitEffect.name, hit.point, Quaternion.LookRotation(hit.normal));
         }
