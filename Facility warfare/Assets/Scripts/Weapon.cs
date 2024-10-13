@@ -121,7 +121,7 @@ public class Weapon : MonoBehaviour
             }
             if (hit.transform.GetComponent<PlayerHealth>())
             {
-                aud.PlayOneShot(hitSfx);
+              
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, 35);
                 
             }
