@@ -125,7 +125,8 @@ public class Weapon : MonoBehaviour
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, 35);
                 
             }
-            PhotonNetwork.Instantiate(hitEffect.name, hit.point, Quaternion.LookRotation(hit.normal));
+            else PhotonNetwork.Instantiate(hitEffect.name, hit.point, Quaternion.LookRotation(hit.normal));
+
         }
         if (ammo == 0) StartCoroutine(Reload());
     }
