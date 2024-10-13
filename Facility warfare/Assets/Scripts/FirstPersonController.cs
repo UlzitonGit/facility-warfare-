@@ -377,7 +377,7 @@ public class FirstPersonController : MonoBehaviour
                 Vector3 velocityChange = (targetVelocity - velocity);
                 velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
                 velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-               // velocityChange.y = 0;
+                velocityChange.y = 0;
 
                 // Player is only moving when valocity change != 0
                 // Makes sure fov change only happens during movement
@@ -468,14 +468,14 @@ public class FirstPersonController : MonoBehaviour
     {
 
         // Adds force to the player rigidbody to jump
-        if (jumpCount > 1)
+        if (isGrounded == true)
         {
             isSlide = false;
             rb.linearVelocity = new Vector3(0, 0, 0);
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
             isGrounded = false;
 
-            jumpCount--;
+            
         }
         print(jumpCount);
         // When crouched and using toggle system, will uncrouch for a jump
