@@ -1,7 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-
+using Photon.Pun;
 public class Weapon : MonoBehaviour
 {
     #region Variables
@@ -13,12 +13,13 @@ public class Weapon : MonoBehaviour
     [SerializeField] private KeyCode shootKey = KeyCode.Mouse0;
     [SerializeField] private ParticleSystem muzzleFireEffect;
     [SerializeField] private ParticleSystem hitEffect;
+   
     [SerializeField] private Animator weaponAnimation;
-    [SerializeField] private AudioClip shootSound;
-    [SerializeField] private AudioClip mechanicSound;
+    [SerializeField] LayerMask toIgnore;
     [SerializeField] float aimSmooth = 0.000000000001f;
+    [SerializeField] PhotonSoundMananger _photonSoundMananger;
     private int ammo = 0;
-    [SerializeField] private AudioSource aud;
+   
     public bool isAiming = false;
     public bool isSemiAiming = false;
     bool isReloading = false;
@@ -37,15 +38,15 @@ public class Weapon : MonoBehaviour
     float minusVolume = 1;
     float mechanicMixer = 0;
     [SerializeField] float delayedShootRate = 0.017f;
-    private TextMeshProUGUI ammoText;
+    [SerializeField] TextMeshProUGUI ammoText;
    
     #endregion
     // Start is called before the first frame update
     void Start()
     {
         ammo = maxAmmo;
-        ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<TextMeshProUGUI>();
-        ammoText.text = ammo.ToString();
+        //ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<TextMeshProUGUI>();
+        ammoText.text = "ammo: " + ammo.ToString();
     }
 
     // Update is called once per frame
@@ -84,16 +85,8 @@ public class Weapon : MonoBehaviour
     }
     public void PlaySound()
     {
-        aud.PlayOneShot(shootSound);
-        
-        //minusVolume -= 0.03f;
-        //aud.volume = minusVolume;
-        //if(ammo <= 5)
-        //{
-            //mechanicMixer += 0.07f;
-            //_mechanicaud.volume = mechanicMixer;
-            //_mechanicaud.PlayOneShot(mechanicSound);
-        //}
+        _photonSoundMananger.PlayShootSFX();
+       
     }
    
     #region Shooting&Reloading
@@ -104,22 +97,27 @@ public class Weapon : MonoBehaviour
         shootingRate++;
         delaying = true;
         PlaySound();
+       
         delayWeapon = 0.1f;
         weaponAnimation.SetTrigger("Shoot");
         muzzleFireEffect.Play();
         StartCoroutine(DelayBS());
         recoilScriptCamera.RecoilFire();
         recoilScriptWeapon.RecoilFire();
-        ammoText.text = ammo.ToString();
+        ammoText.text = "ammo: " + ammo.ToString();
         RaycastHit hit;
-        if(Physics.Raycast(shootPoint.transform.position, shootPoint.transform.forward, out hit))
+        if(Physics.Raycast(shootPoint.transform.position, shootPoint.transform.forward, out hit, ~toIgnore))
         {
             Debug.Log(hit.transform.name);
             if(hit.transform.GetComponent<Destroyable>() != null )
             {
                 hit.transform.GetComponent<Destroyable>().Destory();
             }
-            Instantiate(hitEffect.gameObject, hit.point, Quaternion.LookRotation(hit.normal));
+            if (hit.transform.GetComponent<PlayerHealth>())
+            {
+                hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, 35);
+            }
+            PhotonNetwork.Instantiate(hitEffect.name, hit.point, Quaternion.LookRotation(hit.normal));
         }
         if (ammo == 0) StartCoroutine(Reload());
     }
@@ -133,7 +131,7 @@ public class Weapon : MonoBehaviour
         canShoot = false;
         yield return new WaitForSeconds(reloadTime);
         ammo = maxAmmo;
-        ammoText.text = ammo.ToString();
+        ammoText.text = "ammo: " + ammo.ToString();
         isReloading = false;
     }
     IEnumerator DelayBS()
