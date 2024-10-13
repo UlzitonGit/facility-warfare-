@@ -106,7 +106,7 @@ public class Weapon : MonoBehaviour
         recoilScriptWeapon.RecoilFire();
         ammoText.text = "ammo: " + ammo.ToString();
         RaycastHit hit;
-        if(Physics.Raycast(shootPoint.transform.position, shootPoint.transform.forward, out hit, ~toIgnore))
+        if(Physics.Raycast(shootPoint.transform.position, shootPoint.transform.forward, out hit))
         {
             Debug.Log(hit.transform.name);
             if(hit.transform.GetComponent<Destroyable>() != null )
