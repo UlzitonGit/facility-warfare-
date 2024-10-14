@@ -6,6 +6,7 @@ public class RoomMananger : MonoBehaviourPunCallbacks
     [SerializeField] GameObject player;
     [SerializeField] Transform[] spp;
     [SerializeField] GameObject loadingScreen;
+    [SerializeField] GameObject[] loadouts;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -32,14 +33,27 @@ public class RoomMananger : MonoBehaviourPunCallbacks
     }
     public override void OnJoinedRoom()
     {
-        base.OnJoinedRoom();  
-        RespawnPlayer();
-        loadingScreen.SetActive(false);
+        base.OnJoinedRoom();
+        ChooseLoadOut();
+        
     }
-    public void RespawnPlayer()
+    public void ChooseLoadOut()
     {
+       
+        Cursor.lockState = CursorLockMode.None;        
+        Cursor.visible = true;
+        loadingScreen.SetActive(true);
+        for (int i = 0; i < loadouts.Length; i++)
+        {
+            loadouts[i].SetActive(true);
+        }
+    }
+   
+    public void RespawnPlayer(int loadout)
+    {
+        loadingScreen.SetActive(false);
         GameObject _player = PhotonNetwork.Instantiate(player.name, spp[Random.Range(0, spp.Length)].position, Quaternion.identity);
-        _player.GetComponent<PlayerSetup>().IsLocalPlayer();
+        _player.GetComponent<PlayerSetup>().IsLocalPlayer(loadout);
         _player.GetComponent<PlayerHealth>().isLocalPlayer = true;
     }
 }

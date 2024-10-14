@@ -161,7 +161,7 @@ public class FirstPersonController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
-        
+        Cursor.visible = false;
       
         
         #region Sprint Bar

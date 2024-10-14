@@ -15,8 +15,9 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
+            int loadout = GetComponent<PlayerSetup>().loaduot;
             if(isLocalPlayer)
-                RoomMananger._instance.RespawnPlayer();
+                RoomMananger._instance.RespawnPlayer(loadout);
             Destroy(gameObject);
         }
     }
