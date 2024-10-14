@@ -562,7 +562,7 @@ MonoBehaviour:
   delayBetweenShots: 0.05
   reloadTime: 3
   damage: 20
-  maxAmmo: 30
+  maxAmmo: 45
   shootPoint: {fileID: 8768328543270164050}
   shootKey: 323
   muzzleFireEffect: {fileID: 120975807386914274}
@@ -1131,9 +1131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 5977624931232276551}
-  recoilX: -5
+  recoilX: -3
   recoilY: 0
-  recoilZ: 2
+  recoilZ: 1
   snappiness: 25
   returnSpeed: 6
 --- !u!1 &5478996339012856086
