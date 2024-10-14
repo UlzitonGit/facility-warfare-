@@ -502,7 +502,7 @@ public class FirstPersonController : MonoBehaviour
         walkSpeed = walkSpeed / 3;
         enableSprint = true;
         rb.useGravity = true;
-        yield return new WaitForSeconds(3.6f);
+        yield return new WaitForSeconds(1.5f);
         canFly = true;
         //isSlide = false;
 
