@@ -4,8 +4,7 @@ using Photon.Pun;
 public class FaceCamera : MonoBehaviour
 {
     private Camera enemyCamera;
-
-    private void Start()
+    public void UpdateCamera()
     {
         if (PhotonNetwork.IsConnected)
         {
@@ -23,7 +22,7 @@ public class FaceCamera : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         if (enemyCamera != null)
         {

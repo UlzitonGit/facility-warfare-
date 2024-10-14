@@ -18,10 +18,9 @@ public class RoomMananger : MonoBehaviourPunCallbacks
         load.SetActive(false);
     }
 
-    public void ChangeNickname(string _name)
+    public void ChangeNickname (string _name)
     {
         nickname = _name;
-        Debug.Log(nickname);
     }
 
     public void JoinRoomButtonPressed()

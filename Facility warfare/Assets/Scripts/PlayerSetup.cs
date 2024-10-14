@@ -20,13 +20,18 @@ public class PlayerSetup : MonoBehaviour
         movement.enabled = true;
         camera.SetActive(true);
         graphic.transform.localScale = new Vector3(0, 0, 0);
+
+        FaceCamera[] fc = FindObjectsByType<FaceCamera>(FindObjectsSortMode.None);
+        for (int i = 0; i < fc.Length; i++)
+        {
+            fc[i].UpdateCamera();
+        }
     }
 
    [PunRPC] 
    public void SetNickname(string _name)
     {
         nickname = _name;
-        
         nicknameText.text = nickname;
     }
 }
