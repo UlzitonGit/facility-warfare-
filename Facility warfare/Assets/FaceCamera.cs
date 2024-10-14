@@ -2,8 +2,14 @@ using UnityEngine;
 
 public class FaceCamera : MonoBehaviour
 {
+    [SerializeField] FirstPersonController controller;
+    Camera cam;
+    private void Start()
+    {
+        cam = controller.playerCamera;
+    }
     void Update()
     {
-        transform.LookAt(Camera.main.transform);
+        transform.LookAt(cam.transform);
     }
 }
