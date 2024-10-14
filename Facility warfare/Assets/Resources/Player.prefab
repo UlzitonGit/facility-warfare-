@@ -2112,6 +2112,7 @@ MonoBehaviour:
   qeSpeed: 3
   QE: {fileID: 8274780811662324897}
   anim: {fileID: 2019856357892384099}
+  cameraLerp: {fileID: 8601889074490226467}
   lockCursor: 1
   crosshair: 1
   crosshairImage: {fileID: 0}
@@ -2803,7 +2804,7 @@ Transform:
   m_GameObject: {fileID: 8601889074490226467}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.798, z: -0.056}
+  m_LocalPosition: {x: 0, y: 0.8, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

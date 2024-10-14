@@ -32,6 +32,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] float qeSpeed = 3;
     [SerializeField] Transform QE;
     [SerializeField] Animator anim;
+    [SerializeField] GameObject cameraLerp;
     // Crosshair
     public bool lockCursor = true;
     public bool crosshair = true;
@@ -350,7 +351,14 @@ public class FirstPersonController : MonoBehaviour
     void FixedUpdate()
     {
         #region Movement
-
+        if(isSlide == true)
+        {
+            cameraLerp.transform.localPosition = Vector3.Slerp(cameraLerp.transform.localPosition, new Vector3(0, 0.3f, -0.05f), Time.deltaTime * 60f);
+        }
+        if (isSlide == false)
+        {
+            cameraLerp.transform.localPosition = Vector3.Slerp(cameraLerp.transform.localPosition, new Vector3(0, 0.8f, -0.05f), Time.deltaTime * 60f);
+        }
         anim.SetBool("InAir", isGrounded == false);
         if (playerCanMove && isSlide == false)
         {
