@@ -137,7 +137,7 @@ public class Weapon : MonoBehaviour
     private IEnumerator Hitmarker()
     {
         hitmarker.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
         hitmarker.SetActive(false);
     }
     IEnumerator Reload()
