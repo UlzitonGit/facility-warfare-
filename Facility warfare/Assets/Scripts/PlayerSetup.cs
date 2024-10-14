@@ -11,7 +11,7 @@ public class PlayerSetup : MonoBehaviour
     [SerializeField] GameObject[] weapon;
     
     public string nickname;
-    public TextMeshProUGUI nicknameText;
+    public TextMeshPro nicknameText;
     
     public void IsLocalPlayer(int weaponIndex)
     {
