@@ -14,6 +14,6 @@ public class PlayerSetup : MonoBehaviour
         weapon[weaponIndex].SetActive(true);
         movement.enabled = true;
         camera.SetActive(true);
-        graphic.SetActive(false);
+        graphic.transform.localScale = new Vector3(0, 0, 0);
     }
 }

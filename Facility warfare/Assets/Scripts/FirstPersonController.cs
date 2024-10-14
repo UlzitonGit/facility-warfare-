@@ -31,6 +31,7 @@ public class FirstPersonController : MonoBehaviour
     public float maxLookAngle = 50f;
     [SerializeField] float qeSpeed = 3;
     [SerializeField] Transform QE;
+    [SerializeField] Animator anim;
     // Crosshair
     public bool lockCursor = true;
     public bool crosshair = true;
@@ -350,7 +351,7 @@ public class FirstPersonController : MonoBehaviour
     {
         #region Movement
 
-
+        anim.SetBool("InAir", isGrounded == false);
         if (playerCanMove && isSlide == false)
         {
             // Calculate how fast we should be moving
@@ -403,14 +404,15 @@ public class FirstPersonController : MonoBehaviour
                
 
                 targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
-
+                Vector3 localVelocity = transform.InverseTransformDirection(targetVelocity);
                 // Apply a force that attempts to reach our target velocity
                 Vector3 velocity = rb.linearVelocity;
                 Vector3 velocityChange = (targetVelocity - velocity);
                 velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
                 velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
                 velocityChange.y = 0;
-
+                anim.SetFloat("Horizontal", localVelocity.z);
+                anim.SetFloat("Vertical", localVelocity.x);
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
             }
         }
