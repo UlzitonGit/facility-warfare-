@@ -17,8 +17,11 @@ public class PlayerHealth : MonoBehaviour
         {
             int loadout = GetComponent<PlayerSetup>().loaduot;
             if(isLocalPlayer)
+            {
                 RoomMananger._instance.RespawnPlayer(loadout);
-            Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
+            }
+           
         }
     }
 }
