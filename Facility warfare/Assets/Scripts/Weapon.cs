@@ -123,7 +123,7 @@ public class Weapon : MonoBehaviour
             {
                 float currentDamage = damage;
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, currentDamage);
-                
+                aud.PlayOneShot(hitSfx);
             }
             else PhotonNetwork.Instantiate(hitEffect.name, hit.point, Quaternion.LookRotation(hit.normal));
 
