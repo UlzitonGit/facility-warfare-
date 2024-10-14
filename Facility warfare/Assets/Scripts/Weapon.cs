@@ -2,6 +2,8 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.Serialization;
+
 public class Weapon : MonoBehaviour
 {
     #region Variables
@@ -32,7 +34,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Vector3 semiAimPos;
     [SerializeField] Quaternion semiAimRot;
     [SerializeField] Vector3 armPos;
-    [SerializeField] GameObject hitMarker;
+    [SerializeField] GameObject hitmarker;
     float delayWeapon = 0.1f;
     bool delaying = false;
     bool aimSwitch = true;
@@ -49,6 +51,7 @@ public class Weapon : MonoBehaviour
         ammo = maxAmmo;
         //ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<TextMeshProUGUI>();
         ammoText.text = "ammo: " + ammo.ToString();
+        hitmarker.SetActive(false);
     }
 
     // Update is called once per frame
@@ -124,13 +127,20 @@ public class Weapon : MonoBehaviour
                 float currentDamage = damage;
                 hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, currentDamage);
                 aud.PlayOneShot(hitSfx);
+                StartCoroutine(Hitmarker());
             }
             else PhotonNetwork.Instantiate(hitEffect.name, hit.point, Quaternion.LookRotation(hit.normal));
 
         }
         if (ammo == 0) StartCoroutine(Reload());
     }
-   
+
+    private IEnumerator Hitmarker()
+    {
+        hitmarker.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        hitmarker.SetActive(false);
+    }
     IEnumerator Reload()
     {
         mechanicMixer = 0;
