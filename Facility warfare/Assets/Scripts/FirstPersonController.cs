@@ -441,7 +441,7 @@ public class FirstPersonController : MonoBehaviour
     IEnumerator Sliding()
     {
 
-
+        anim.SetBool("Slide", true);
         Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         targetVelocity = transform.TransformDirection(targetVelocity) * slideSpeed * 2;
         //animCam.SetTrigger("slide");
@@ -457,11 +457,11 @@ public class FirstPersonController : MonoBehaviour
         transform.GetComponent<CapsuleCollider>().center = new Vector3(0, -0.26f, 0);
         transform.GetComponent<CapsuleCollider>().height = 1.4f;
         isSlide = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.6f);
         transform.GetComponent<CapsuleCollider>().center = new Vector3(0, 0, 0);
         transform.GetComponent<CapsuleCollider>().height = 2;
         transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
-
+        anim.SetBool("Slide", false);
         isSlide = false;
         yield return new WaitForSeconds(1);
         canSlide = true;
