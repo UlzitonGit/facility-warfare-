@@ -38,7 +38,7 @@ public class FirstPersonController : MonoBehaviour
     public bool crosshair = true;
     public Sprite crosshairImage;
     public Color crosshairColor = Color.white;
-
+    bool canFly = true;
     // Internal Variables
     private float yaw = 0.0f;
     private float pitch = 0.0f;
@@ -310,11 +310,16 @@ public class FirstPersonController : MonoBehaviour
         {
             Jump();
         }
-        if (canSlide == true && Input.GetKey(KeyCode.C))
+        else if (canFly == true && Input.GetKeyDown(jumpKey) && isGrounded == false)
+        {
+            StartCoroutine(Fly());
+        }
+
+        if (canSlide == true && Input.GetKey(KeyCode.C) && isGrounded == true)
         {
             StartCoroutine(Sliding());
         }
-
+        
         #endregion
 
         #region Crouch
@@ -473,6 +478,34 @@ public class FirstPersonController : MonoBehaviour
         isSlide = false;
         yield return new WaitForSeconds(1);
         canSlide = true;
+    }
+    IEnumerator Fly()
+    {
+
+        canFly = false;
+       // Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        //targetVelocity = transform.TransformDirection(targetVelocity) * slideSpeed * 2;
+        //animCam.SetTrigger("slide");
+        // Apply a force that attempts to reach our target velocity
+       // Vector3 velocity = rb.linearVelocity;
+        //Vector3 velocityChange = (targetVelocity - velocity);
+        //velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+        //velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+        //velocityChange.y = 0;
+       // velocityChangeSlide = velocityChange;
+       // rb.AddForce(velocityChangeSlide, ForceMode.Impulse);
+        enableSprint = false;
+        rb.useGravity = false;
+        walkSpeed = walkSpeed * 3;
+       // isSlide = true;
+        yield return new WaitForSeconds(0.6f);
+        walkSpeed = walkSpeed / 3;
+        enableSprint = true;
+        rb.useGravity = true;
+        yield return new WaitForSeconds(3.6f);
+        canFly = true;
+        //isSlide = false;
+
     }
     private void Jump()
     {
