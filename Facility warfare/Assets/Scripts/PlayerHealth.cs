@@ -4,13 +4,13 @@ using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int health;
+    public float health;
     public bool isLocalPlayer;
     [SerializeField] TextMeshProUGUI hpText;
     [SerializeField] GameObject ragdoll;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [PunRPC]
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         hpText.text = "health: " + health.ToString();
         health -= damage;
