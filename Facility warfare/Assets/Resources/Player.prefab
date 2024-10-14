@@ -1014,6 +1014,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3399397129608877829}
+  - {fileID: 8007608366771850595}
   m_Father: {fileID: 8274780811662324897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4807298394043757681
@@ -2809,7 +2810,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 925854956892524251}
-  - {fileID: 8007608366771850595}
   m_Father: {fileID: 825793769770823027}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5738290516682982058
@@ -6398,7 +6398,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3399397129608877829}
+    m_TransformParent: {fileID: 825793769770823027}
     m_Modifications:
     - target: {fileID: 1566076026742012636, guid: 9615a74828d13b14a9ef0981496e1d2e, type: 3}
       propertyPath: m_Pivot.x
@@ -6492,6 +6492,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 5738290516682982058}
+    - target: {fileID: 3551624692554103702, guid: 9615a74828d13b14a9ef0981496e1d2e, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

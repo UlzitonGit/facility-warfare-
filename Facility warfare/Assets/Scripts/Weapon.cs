@@ -2,7 +2,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using Photon.Pun;
-using UnityEngine.Serialization;
 
 public class Weapon : MonoBehaviour
 {
