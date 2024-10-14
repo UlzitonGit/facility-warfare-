@@ -2492,7 +2492,7 @@ MonoBehaviour:
   - {fileID: 6605365729987224311}
   - {fileID: 2568846884684259171}
   nickname: 
-  nicknameText: {fileID: 0}
+  nicknameText: {fileID: 7010562541023868636}
 --- !u!114 &5783407857215375455
 MonoBehaviour:
   m_ObjectHideFlags: 0
