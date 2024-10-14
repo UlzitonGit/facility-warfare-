@@ -561,7 +561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBetweenShots: 0.05
   reloadTime: 3
-  damage: 20
+  damage: 15
   maxAmmo: 30
   shootPoint: {fileID: 8768328543270164050}
   shootKey: 323
@@ -1478,9 +1478,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4d583bbfe26c9488cfb19302aac519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenShots: 0.1
+  delayBetweenShots: 0.85
   reloadTime: 4
-  damage: 10
+  damage: 35
   maxAmmo: 30
   shootPoint: {fileID: 2965370781480407579}
   shootKey: 323
@@ -2269,6 +2269,7 @@ MonoBehaviour:
   health: 100
   isLocalPlayer: 0
   hpText: {fileID: 3019174895115188920}
+  ragdoll: {fileID: 1241593633303044467, guid: 0dc9f143f911a2646b92ad1bfeb777ea, type: 3}
 --- !u!82 &5306320317315173119
 AudioSource:
   m_ObjectHideFlags: 0
