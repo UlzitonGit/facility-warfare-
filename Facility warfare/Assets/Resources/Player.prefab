@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4d583bbfe26c9488cfb19302aac519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenShots: 0.05
+  delayBetweenShots: 0
   reloadTime: 3
   damage: 15
   maxAmmo: 30
@@ -583,7 +583,7 @@ MonoBehaviour:
   semiAimPos: {x: -0.2, y: -0.1, z: -0.2}
   semiAimRot: {x: 0, y: 0, z: 0.25240713, w: 0.96762115}
   armPos: {x: 0, y: 0.01, z: 0}
-  hitmarker: {fileID: 7097701745150307929}
+  hitmarker: {fileID: 2602413343892981626}
   delayedShootRate: 0.018
   ammoText: {fileID: 634092067439621621}
 --- !u!65 &2911206373495325696
@@ -1014,7 +1014,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3399397129608877829}
-  - {fileID: 8007608366771850595}
   m_Father: {fileID: 8274780811662324897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4807298394043757681
@@ -1479,7 +1478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4d583bbfe26c9488cfb19302aac519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenShots: 0.085
+  delayBetweenShots: 0
   reloadTime: 4
   damage: 35
   maxAmmo: 30
@@ -1503,7 +1502,7 @@ MonoBehaviour:
   semiAimPos: {x: -0.2, y: -0.1, z: 0}
   semiAimRot: {x: 0, y: 0, z: 0.25240713, w: 0.96762115}
   armPos: {x: 0, y: 0.01, z: 0}
-  hitmarker: {fileID: 7097701745150307929}
+  hitmarker: {fileID: 2602413343892981626}
   delayedShootRate: 0.018
   ammoText: {fileID: 5108142832557031137}
 --- !u!65 &3402684403632937960
@@ -2810,6 +2809,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 925854956892524251}
+  - {fileID: 8007608366771850595}
   m_Father: {fileID: 825793769770823027}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5738290516682982058
@@ -6398,7 +6398,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 825793769770823027}
+    m_TransformParent: {fileID: 3399397129608877829}
     m_Modifications:
     - target: {fileID: 1566076026742012636, guid: 9615a74828d13b14a9ef0981496e1d2e, type: 3}
       propertyPath: m_Pivot.x
@@ -6493,7 +6493,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5738290516682982058}
     - target: {fileID: 3551624692554103702, guid: 9615a74828d13b14a9ef0981496e1d2e, type: 3}
-      propertyPath: m_RenderMode
+      propertyPath: m_PlaneDistance
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 6811357567377076421, guid: 9615a74828d13b14a9ef0981496e1d2e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6501,9 +6505,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9615a74828d13b14a9ef0981496e1d2e, type: 3}
---- !u!1 &7097701745150307929 stripped
+--- !u!1 &2602413343892981626 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1737112488057313766, guid: 9615a74828d13b14a9ef0981496e1d2e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6811357567377076421, guid: 9615a74828d13b14a9ef0981496e1d2e, type: 3}
   m_PrefabInstance: {fileID: 8834774646459447231}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &8007608366771850595 stripped
