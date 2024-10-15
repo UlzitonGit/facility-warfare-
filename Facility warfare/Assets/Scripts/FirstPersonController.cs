@@ -514,7 +514,6 @@ public class FirstPersonController : MonoBehaviour
         if (isGrounded == true)
         {
             isSlide = false;
-            rb.linearVelocity = new Vector3(0, 0, 0);
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
             isGrounded = false;
 
