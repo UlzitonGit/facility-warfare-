@@ -307,14 +307,11 @@ public class FirstPersonController : MonoBehaviour
         #region Jump
 
         // Gets input and calls jump method
-        if (isGrounded == true && Input.GetKeyDown(jumpKey))
+        if (jumpCount > 0 && Input.GetKeyDown(jumpKey))
         {
             Jump();
         }
-        else if (canFly == true && Input.GetKeyDown(jumpKey) && isGrounded == false)
-        {
-            StartCoroutine(Fly());
-        }
+       
 
         if (canSlide == true && Input.GetKey(KeyCode.C) && isGrounded == true)
         {
@@ -445,7 +442,7 @@ public class FirstPersonController : MonoBehaviour
         {
             Debug.DrawRay(origin, direction * distance, Color.red);
             isGrounded = true;
-          
+            jumpCount = 2;
         }
         else
         {
@@ -496,8 +493,9 @@ public class FirstPersonController : MonoBehaviour
     {
 
         // Adds force to the player rigidbody to jump
-        if (isGrounded == true)
+        if (jumpCount > 0)
         {
+            jumpCount --;
             isSlide = false;
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
             isGrounded = false;
