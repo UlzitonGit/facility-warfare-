@@ -456,10 +456,20 @@ public class FirstPersonController : MonoBehaviour
         canSlide = false;
         anim.SetBool("Slide", true);
         enableSprint = false;
-        
+
+        Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
+       
+        // Apply a force that attempts to reach our target velocity
+        Vector3 velocity = rb.linearVelocity;
+        Vector3 velocityChange = (targetVelocity - velocity);
+        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+        velocityChange.y = 0;
         isSlide = true;
         // isSlide = true;
-        rb.AddForce(rb.transform.forward * slideSpeed, ForceMode.Impulse);
+        rb.AddForce(velocityChange * slideSpeed * -1, ForceMode.Impulse);
         slideAnim.SetTrigger("Slide");
         yield return new WaitForSeconds(0.5f);
         anim.SetBool("Slide", false);
@@ -492,12 +502,13 @@ public class FirstPersonController : MonoBehaviour
     }
     private void Jump()
     {
-
+        
         // Adds force to the player rigidbody to jump
         if (jumpCount > 0)
         {
             jumpCount --;
             isSlide = false;
+            rb.linearVelocity = Vector3.zero;
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
             isGrounded = false;
 
