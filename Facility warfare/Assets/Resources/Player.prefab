@@ -308,6 +308,61 @@ Transform:
   - {fileID: 2709014349707398047}
   m_Father: {fileID: 6046076001096278172}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &377082846029642591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2998137700560400599}
+  - component: {fileID: 7121632480428524835}
+  m_Layer: 0
+  m_Name: SlideAnim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2998137700560400599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377082846029642591}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3399397129608877829}
+  m_Father: {fileID: 825793769770823027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7121632480428524835
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377082846029642591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 14a49fb7c2322024db9e60190e8b2bf3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &452719290639991691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,11 +2075,11 @@ Transform:
   m_GameObject: {fileID: 4642718830020126330}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3399397129608877829}
+  - {fileID: 2998137700560400599}
   m_Father: {fileID: 8274780811662324897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4807298394043757681
@@ -3640,9 +3695,9 @@ MonoBehaviour:
   walkSpeed: 3
   maxVelocityChange: 10
   enableSprint: 1
-  unlimitedSprint: 0
+  unlimitedSprint: 1
   sprintKey: 304
-  sprintSpeed: 5
+  sprintSpeed: 7
   sprintDuration: 5
   sprintCooldown: 0.5
   sprintFOV: 85
@@ -3656,7 +3711,9 @@ MonoBehaviour:
   enableJump: 1
   jumpKey: 32
   jumpPower: 5
+  slideSpeed: 10
   isGrounded: 0
+  slideAnim: {fileID: 7121632480428524835}
   enableCrouch: 0
   holdToCrouch: 1
   crouchKey: 306
@@ -3693,7 +3750,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &5778322642203681277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4603,7 +4660,7 @@ Transform:
   m_Children:
   - {fileID: 925854956892524251}
   - {fileID: 8007608366771850595}
-  m_Father: {fileID: 825793769770823027}
+  m_Father: {fileID: 2998137700560400599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5738290516682982058
 Camera:

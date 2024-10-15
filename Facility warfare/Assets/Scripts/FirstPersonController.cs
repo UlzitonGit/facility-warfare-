@@ -103,12 +103,13 @@ public class FirstPersonController : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public float jumpPower = 5f;
     private int jumpCount = 1;
-    float slideSpeed = 5;
+    [SerializeField] float slideSpeed = 5;
     private bool canSlide = true;
     // Internal Variables
     public bool isGrounded = false;
     Vector3 velocityChangeSlide;
     private bool onzipline = false;
+    [SerializeField] Animator slideAnim;
     #endregion
 
     #region Crouch
@@ -444,7 +445,7 @@ public class FirstPersonController : MonoBehaviour
         {
             Debug.DrawRay(origin, direction * distance, Color.red);
             isGrounded = true;
-            
+          
         }
         else
         {
@@ -454,46 +455,30 @@ public class FirstPersonController : MonoBehaviour
     IEnumerator Sliding()
     {
 
-        anim.SetBool("Slide", true);
-        Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        targetVelocity = transform.TransformDirection(targetVelocity) * slideSpeed * 2;
-        //animCam.SetTrigger("slide");
-        // Apply a force that attempts to reach our target velocity
-        Vector3 velocity = rb.linearVelocity;
-        Vector3 velocityChange = (targetVelocity - velocity);
-        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-        velocityChange.y = 0;
-        velocityChangeSlide = velocityChange;
-        rb.AddForce(velocityChangeSlide, ForceMode.Impulse);
         canSlide = false;
-        transform.GetComponent<CapsuleCollider>().center = new Vector3(0, -0.26f, 0);
-        transform.GetComponent<CapsuleCollider>().height = 1.4f;
+        anim.SetBool("Slide", true);
+        enableSprint = false;
+        
         isSlide = true;
-        yield return new WaitForSeconds(0.6f);
-        transform.GetComponent<CapsuleCollider>().center = new Vector3(0, 0, 0);
-        transform.GetComponent<CapsuleCollider>().height = 2;
-        transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
+        // isSlide = true;
+        rb.AddForce(rb.transform.forward * slideSpeed, ForceMode.Impulse);
+        slideAnim.SetTrigger("Slide");
+        yield return new WaitForSeconds(0.5f);
         anim.SetBool("Slide", false);
+
         isSlide = false;
-        yield return new WaitForSeconds(1);
+
+        enableSprint = true;
+        //rb.useGravity = true;
+        yield return new WaitForSeconds(1f);
         canSlide = true;
+        //isSlide = false;
     }
     IEnumerator Fly()
     {
 
         canFly = false;
-       // Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        //targetVelocity = transform.TransformDirection(targetVelocity) * slideSpeed * 2;
-        //animCam.SetTrigger("slide");
-        // Apply a force that attempts to reach our target velocity
-       // Vector3 velocity = rb.linearVelocity;
-        //Vector3 velocityChange = (targetVelocity - velocity);
-        //velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-        //velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-        //velocityChange.y = 0;
-       // velocityChangeSlide = velocityChange;
-       // rb.AddForce(velocityChangeSlide, ForceMode.Impulse);
+     
         enableSprint = false;
         rb.useGravity = false;
         walkSpeed = walkSpeed * 3;
