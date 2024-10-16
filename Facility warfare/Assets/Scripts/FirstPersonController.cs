@@ -1,26 +1,11 @@
-// CHANGE LOG
-// 
-// CHANGES || version VERSION
-//
-// "Enable/Disable Headbob, Changed look rotations - should result in reduced camera jitters" || version 1.0.1
-
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
-
-
-#if UNITY_EDITOR
 using UnityEditor;
-using System.Net;
-#endif
 
 public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
-    private ReplayBuffer replayBuffer = new ReplayBuffer();
 
     #region Camera Movement Variables
 

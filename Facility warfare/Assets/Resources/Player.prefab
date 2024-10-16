@@ -3612,7 +3612,6 @@ GameObject:
   - component: {fileID: 5783407857215375455}
   - component: {fileID: 8708006918914978537}
   - component: {fileID: 5306320317315173119}
-  - component: {fileID: -1128225371263543860}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3847,7 +3846,6 @@ MonoBehaviour:
   hpText: {fileID: 3019174895115188920}
   ragdoll: {fileID: 1241593633303044467, guid: 0dc9f143f911a2646b92ad1bfeb777ea, type: 3}
   part: {fileID: 282666493630896490, guid: 07ef80d3ee6b0b64eb37285fff504c81, type: 3}
-  replayBuffer: {fileID: -1128225371263543860}
 --- !u!82 &5306320317315173119
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3945,18 +3943,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-1128225371263543860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7272737280347225382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 794a5532d5e2c844a9e67dcff1ee5eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7351308265805948332
 GameObject:
   m_ObjectHideFlags: 0
