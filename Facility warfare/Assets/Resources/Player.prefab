@@ -3847,7 +3847,7 @@ MonoBehaviour:
   hpText: {fileID: 3019174895115188920}
   ragdoll: {fileID: 1241593633303044467, guid: 0dc9f143f911a2646b92ad1bfeb777ea, type: 3}
   part: {fileID: 282666493630896490, guid: 07ef80d3ee6b0b64eb37285fff504c81, type: 3}
-  replayBuffer: {fileID: 0}
+  replayBuffer: {fileID: -1128225371263543860}
 --- !u!82 &5306320317315173119
 AudioSource:
   m_ObjectHideFlags: 0
