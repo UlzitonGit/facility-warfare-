@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
@@ -9,7 +10,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] TextMeshProUGUI hpText;
     [SerializeField] GameObject ragdoll;
     [SerializeField] GameObject part;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    [SerializeField] KillCamMethods kcMethods;
+    [SerializeField] ReplayManager rp;
+    
     [PunRPC]
     public void TakeDamage(float damage)
     {
@@ -18,14 +22,24 @@ public class PlayerHealth : MonoBehaviour
         PhotonNetwork.Instantiate(part.name, transform.position, Quaternion.identity);
         if(health <= 0)
         {
-            int loadout = GetComponent<PlayerSetup>().loaduot;
             if(isLocalPlayer)
             {
-                PhotonNetwork.Instantiate(ragdoll.name, transform.position, Quaternion.identity);
-                RoomMananger._instance.RespawnPlayer(loadout);
-                PhotonNetwork.Destroy(gameObject);
+                StartCoroutine(EndReplay());
             }
-           
         }
+    }
+    
+    private IEnumerator EndReplay()
+    {
+        rp.OnPlayerDeath();
+        int loadout = GetComponent<PlayerSetup>().loaduot;
+        
+        yield return new WaitForSeconds(5f);
+        
+        kcMethods.DeactivateKillCam();
+        
+        PhotonNetwork.Instantiate(ragdoll.name, transform.position, Quaternion.identity);
+        RoomMananger._instance.RespawnPlayer(loadout);
+        PhotonNetwork.Destroy(gameObject);
     }
 }
