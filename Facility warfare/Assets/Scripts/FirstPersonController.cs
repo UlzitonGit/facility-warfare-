@@ -19,6 +19,7 @@ using System.Net;
 public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
+    private ReplayBuffer replayBuffer = new ReplayBuffer();
 
     #region Camera Movement Variables
 
@@ -180,6 +181,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
+        replayBuffer.RecordState(this);
        
         #region Camera
         if (onzipline == true && Input.GetKeyDown(jumpKey))
