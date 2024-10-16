@@ -11,8 +11,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] TextMeshProUGUI hpText;
     [SerializeField] GameObject ragdoll;
     [SerializeField] GameObject part;
-
-    ReplayBuffer rb;
+    
+    private ReplayBuffer replayBuffer = new ReplayBuffer();
     
     [PunRPC]
     public void TakeDamage(float damage)
@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
     
     IEnumerator ReplayCoroutine()
     {
-        List<PlayerState> replayData = rb.GetReplayData();
+        List<PlayerState> replayData = replayBuffer.GetReplayData();
 
         foreach (PlayerState state in replayData)
         {

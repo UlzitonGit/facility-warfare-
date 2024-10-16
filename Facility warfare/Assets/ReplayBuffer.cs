@@ -18,7 +18,6 @@ public class ReplayBuffer
         
         buffer.RemoveAll(state => Time.time - state.time > replayDuration);
     }
-
     public List<PlayerState> GetReplayData()
     {
         return new List<PlayerState>(buffer);
