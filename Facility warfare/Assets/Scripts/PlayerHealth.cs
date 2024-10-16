@@ -22,14 +22,9 @@ public class PlayerHealth : MonoBehaviour
         PhotonNetwork.Instantiate(part.name, transform.position, Quaternion.identity);
         if(health <= 0)
         {
-            int loadout = GetComponent<PlayerSetup>().loaduot;
             if(isLocalPlayer)
             {
                 PlayReplay();
-                
-                PhotonNetwork.Instantiate(ragdoll.name, transform.position, Quaternion.identity);
-                RoomMananger._instance.RespawnPlayer(loadout);
-                PhotonNetwork.Destroy(gameObject);
             }
         }
     }
@@ -48,7 +43,16 @@ public class PlayerHealth : MonoBehaviour
             transform.position = state.position;
             transform.rotation = state.rotation;
             
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return new WaitForSeconds(5f);
+            
+            int loadout = GetComponent<PlayerSetup>().loaduot;
+            
+            if(isLocalPlayer)
+            {
+                PhotonNetwork.Instantiate(ragdoll.name, transform.position, Quaternion.identity);
+                RoomMananger._instance.RespawnPlayer(loadout);
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
     }
 }
