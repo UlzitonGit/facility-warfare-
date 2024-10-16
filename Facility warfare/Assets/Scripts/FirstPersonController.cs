@@ -182,8 +182,6 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
-        replayBuffer.RecordState(this);
-       
         #region Camera
         if (onzipline == true && Input.GetKeyDown(jumpKey))
         {
