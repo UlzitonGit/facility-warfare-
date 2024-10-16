@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 62796854713793261}
-  - component: {fileID: 4126505017961150275}
-  - component: {fileID: 2854351549243202256}
   m_Layer: 0
   m_Name: ReplayManager
   m_TagString: Untagged
@@ -33,32 +31,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4126505017961150275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6011767254772971616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f1b02565715db74f8491d27b403e4a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerClonePrefab: {fileID: 7272737280347225382, guid: ecf719508bc2875429d9d6bf27d11b4b, type: 3}
-  playerStateRecorder: {fileID: 2798545096983514296, guid: ecf719508bc2875429d9d6bf27d11b4b, type: 3}
---- !u!114 &2854351549243202256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6011767254772971616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 476d1789cde2b98498a90962b7ed7f5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  killCam: {fileID: 0}
-  killerTransform: {fileID: 0}

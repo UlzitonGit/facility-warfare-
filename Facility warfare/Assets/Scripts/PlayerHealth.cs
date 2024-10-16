@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
@@ -10,9 +11,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] TextMeshProUGUI hpText;
     [SerializeField] GameObject ragdoll;
     [SerializeField] GameObject part;
-    
-    [SerializeField] KillCamMethods kcMethods;
-    [SerializeField] ReplayManager rp;
+
+    ReplayBuffer rb;
     
     [PunRPC]
     public void TakeDamage(float damage)
@@ -22,24 +22,33 @@ public class PlayerHealth : MonoBehaviour
         PhotonNetwork.Instantiate(part.name, transform.position, Quaternion.identity);
         if(health <= 0)
         {
+            int loadout = GetComponent<PlayerSetup>().loaduot;
             if(isLocalPlayer)
             {
-                StartCoroutine(EndReplay());
+                PlayReplay();
+                
+                PhotonNetwork.Instantiate(ragdoll.name, transform.position, Quaternion.identity);
+                RoomMananger._instance.RespawnPlayer(loadout);
+                PhotonNetwork.Destroy(gameObject);
             }
         }
     }
-    
-    private IEnumerator EndReplay()
+
+    private void PlayReplay()
     {
-        rp.OnPlayerDeath();
-        int loadout = GetComponent<PlayerSetup>().loaduot;
-        
-        yield return new WaitForSeconds(5f);
-        
-        kcMethods.DeactivateKillCam();
-        
-        PhotonNetwork.Instantiate(ragdoll.name, transform.position, Quaternion.identity);
-        RoomMananger._instance.RespawnPlayer(loadout);
-        PhotonNetwork.Destroy(gameObject);
+        StartCoroutine(ReplayCoroutine());
+    }
+    
+    IEnumerator ReplayCoroutine()
+    {
+        List<PlayerState> replayData = rb.GetReplayData();
+
+        foreach (PlayerState state in replayData)
+        {
+            transform.position = state.position;
+            transform.rotation = state.rotation;
+            
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
     }
 }
