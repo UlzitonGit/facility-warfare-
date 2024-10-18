@@ -182,34 +182,7 @@ public class FirstPersonController : MonoBehaviour
     {
        
         #region Camera
-        if (onzipline == true && Input.GetKeyDown(jumpKey))
-        {
-            transform.SetParent(null);
-            rb.isKinematic = false;
-            playerCanMove = true;
-            onzipline = false;
-        }
-        // Control camera movement
-        if (cameraCanMove)
-        {
-            yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
-
-            if (!invertCamera)
-            {
-                pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
-            }
-            else
-            {
-                // Inverted Y
-                pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
-            }
-
-            // Clamp pitch between lookAngle
-            pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
-
-            transform.localEulerAngles = new Vector3(0, yaw, 0);
-            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
-        }
+       
        
         #region Camera Zoom
 
@@ -353,8 +326,36 @@ public class FirstPersonController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (onzipline == true && Input.GetKeyDown(jumpKey))
+        {
+            transform.SetParent(null);
+            rb.isKinematic = false;
+            playerCanMove = true;
+            onzipline = false;
+        }
+        // Control camera movement
+        if (cameraCanMove)
+        {
+            yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+
+            if (!invertCamera)
+            {
+                pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
+            }
+            else
+            {
+                // Inverted Y
+                pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
+            }
+
+            // Clamp pitch between lookAngle
+            pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
+
+            transform.localEulerAngles = new Vector3(0, yaw, 0);
+            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+        }
         #region Movement
-        if(isSlide == true)
+        if (isSlide == true)
         {
             cameraLerp.transform.localPosition = Vector3.Slerp(cameraLerp.transform.localPosition, new Vector3(0, 0.3f, -0.05f), Time.deltaTime * 60f);
         }

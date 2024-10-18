@@ -65,7 +65,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Shades: 0.49
+    - _Shades: 2
     - _max: 1
     - _min: 0.3
     - _outline: 1
