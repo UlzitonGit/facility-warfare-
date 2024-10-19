@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
             if(isLocalPlayer)
             {
                 PhotonNetwork.Instantiate(ragdoll.name, transform.position, Quaternion.identity);
-                RoomMananger._instance.RespawnPlayer(loadout);
+                RoomMananger._instance.ChooseLoadOut();
                 PhotonNetwork.Destroy(gameObject);
             }
            

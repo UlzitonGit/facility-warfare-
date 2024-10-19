@@ -5514,7 +5514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4d583bbfe26c9488cfb19302aac519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenShots: 0.06
+  delayBetweenShots: 0.065
   reloadTime: 3
   damage: 25
   maxAmmo: 30
@@ -10290,6 +10290,10 @@ PrefabInstance:
     - target: {fileID: 7566951190426335201, guid: 3c192935bbb672444ac66e464e598e31, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 82.674
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 3c192935bbb672444ac66e464e598e31, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
