@@ -4,6 +4,7 @@
 //
 // "Enable/Disable Headbob, Changed look rotations - should result in reduced camera jitters" || version 1.0.1
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -180,10 +181,6 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
-       
-        #region Camera
-       
-       
         #region Camera Zoom
 
         if (enableZoom)
@@ -227,7 +224,6 @@ public class FirstPersonController : MonoBehaviour
             }
         }
 
-        #endregion
         #endregion
 
         #region Sprint
@@ -315,17 +311,14 @@ public class FirstPersonController : MonoBehaviour
         }
 
         #endregion
-
+        
         CheckGround();
 
         if (enableHeadBob)
         {
             HeadBob();
         }
-    }
-
-    void FixedUpdate()
-    {
+        
         if (onzipline == true && Input.GetKeyDown(jumpKey))
         {
             transform.SetParent(null);
@@ -333,36 +326,11 @@ public class FirstPersonController : MonoBehaviour
             playerCanMove = true;
             onzipline = false;
         }
-        // Control camera movement
-        if (cameraCanMove)
-        {
-            yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+    }
 
-            if (!invertCamera)
-            {
-                pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
-            }
-            else
-            {
-                // Inverted Y
-                pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
-            }
-
-            // Clamp pitch between lookAngle
-            pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
-
-            transform.localEulerAngles = new Vector3(0, yaw, 0);
-            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
-        }
+    void FixedUpdate()
+    {
         #region Movement
-        if (isSlide == true)
-        {
-            cameraLerp.transform.localPosition = Vector3.Slerp(cameraLerp.transform.localPosition, new Vector3(0, 0.3f, -0.05f), Time.deltaTime * 60f);
-        }
-        if (isSlide == false)
-        {
-            cameraLerp.transform.localPosition = Vector3.Slerp(cameraLerp.transform.localPosition, new Vector3(0, 0.8f, -0.05f), Time.deltaTime * 60f);
-        }
         anim.SetBool("InAir", isGrounded == false);
         if (playerCanMove && isSlide == false)
         {
@@ -413,8 +381,6 @@ public class FirstPersonController : MonoBehaviour
             {
                 isSprinting = false;
 
-               
-
                 targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
                 Vector3 localVelocity = transform.InverseTransformDirection(targetVelocity);
                 // Apply a force that attempts to reach our target velocity
@@ -428,11 +394,49 @@ public class FirstPersonController : MonoBehaviour
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
             }
         }
-
         #endregion
     }
 
-    // Sets isGrounded based on a raycast sent straigth down from the player object
+    private void LateUpdate()
+    {
+        #region CameraMovement
+        
+        if (isSlide == true)
+        {
+            cameraLerp.transform.localPosition = Vector3.Slerp(cameraLerp.transform.localPosition,
+                new Vector3(0, 0.3f, -0.05f), Time.deltaTime * 60f);
+        }
+
+        if (isSlide == false)
+        {
+            cameraLerp.transform.localPosition = Vector3.Slerp(cameraLerp.transform.localPosition,
+                new Vector3(0, 0.8f, -0.05f), Time.deltaTime * 60f);
+        }
+
+        if (cameraCanMove)
+        {
+            yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+
+            if (!invertCamera)
+            {
+                pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
+            }
+            else
+            {
+                // Inverted Y
+                pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
+            }
+
+            // Clamp pitch between lookAngle
+            pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
+
+            transform.localEulerAngles = new Vector3(0, yaw, 0);
+            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+        }
+        #endregion CameraMovement
+    }
+
+    #region GroundCheck
     private void CheckGround()
     {
         Vector3 origin = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y * .5f), transform.position.z);
@@ -450,6 +454,7 @@ public class FirstPersonController : MonoBehaviour
             isGrounded = false;
         }
     }
+    #endregion GroundCheck
     IEnumerator Sliding()
     {
 
@@ -591,9 +596,6 @@ public class FirstPersonControllerEditor : Editor
         fpc = (FirstPersonController)target;
         SerFPC = new SerializedObject(fpc);
     }
-
-
-
 }
 
 #endif

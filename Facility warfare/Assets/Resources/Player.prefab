@@ -4313,7 +4313,7 @@ MonoBehaviour:
   crouchHeight: 0.75
   speedReduction: 0.5
   graphic: {fileID: 0}
-  enableHeadBob: 0
+  enableHeadBob: 1
   joint: {fileID: 743043798901309061}
   bobSpeed: 10
   bobAmount: {x: 0.15, y: 0.05, z: 0}
