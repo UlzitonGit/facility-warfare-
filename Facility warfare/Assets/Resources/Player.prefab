@@ -205,7 +205,7 @@ MonoBehaviour:
   _photonSoundMananger: {fileID: 5406946899077117808}
   isAiming: 0
   isSemiAiming: 0
-  recoilScriptCamera: {fileID: 4807298394043757681}
+  recoilScriptCamera: {fileID: 0}
   recoilScriptWeapon: {fileID: 5619677297262451970}
   aimPos: {x: -0.1099, y: 0.0528, z: -0.0846}
   semiAimPos: {x: -0.2, y: -0.1, z: -0.2}
@@ -1572,7 +1572,7 @@ MonoBehaviour:
   _photonSoundMananger: {fileID: 4780789097207936989}
   isAiming: 0
   isSemiAiming: 0
-  recoilScriptCamera: {fileID: 4807298394043757681}
+  recoilScriptCamera: {fileID: 0}
   recoilScriptWeapon: {fileID: 6447184140500026177}
   aimPos: {x: -0.12, y: 0.06, z: -0.25}
   semiAimPos: {x: -0.2, y: -0.1, z: -0.2}
@@ -3422,7 +3422,7 @@ MonoBehaviour:
   _photonSoundMananger: {fileID: 5962767324359777138}
   isAiming: 0
   isSemiAiming: 0
-  recoilScriptCamera: {fileID: 4807298394043757681}
+  recoilScriptCamera: {fileID: 0}
   recoilScriptWeapon: {fileID: 6428114985570067149}
   aimPos: {x: -0.13, y: 0.035, z: -0.002}
   semiAimPos: {x: -0.2, y: -0.1, z: 0}
@@ -5534,7 +5534,7 @@ MonoBehaviour:
   _photonSoundMananger: {fileID: 2145726552193646158}
   isAiming: 0
   isSemiAiming: 0
-  recoilScriptCamera: {fileID: 4807298394043757681}
+  recoilScriptCamera: {fileID: 0}
   recoilScriptWeapon: {fileID: 7682769558193527549}
   aimPos: {x: -0.07, y: 0.06, z: -0.002}
   semiAimPos: {x: -0.2, y: -0.1, z: 0}

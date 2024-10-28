@@ -62,7 +62,7 @@ public class FirstPersonController : MonoBehaviour
     #endregion
 
     #region Movement Variables
-
+    bool isJumping = false;
     public bool playerCanMove = true;
     public float walkSpeed = 5f;
     public float maxVelocityChange = 10f;
@@ -285,6 +285,7 @@ public class FirstPersonController : MonoBehaviour
     }
     private void Movement()
     {
+        if (isSlide == true) return;
         moveDirection = orientation.forward * verInput + orientation.right * horInput;
         moveDirection = moveDirection.normalized * walkSpeed;
         rb.linearVelocity = new Vector3(moveDirection.x, rb.linearVelocity.y, moveDirection.z ) ;
@@ -304,7 +305,8 @@ public class FirstPersonController : MonoBehaviour
         {
             Debug.DrawRay(origin, direction * distance, Color.red);
             isGrounded = true;
-            jumpCount = 2;
+            if(isJumping == false)
+                jumpCount = 2;
            
         }
         else
@@ -322,21 +324,16 @@ public class FirstPersonController : MonoBehaviour
         anim.SetBool("Slide", true);
         enableSprint = false;
 
-        Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        moveDirection = orientation.forward * verInput + orientation.right * horInput;
+        moveDirection = moveDirection.normalized * walkSpeed;
 
-        targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
-       
         // Apply a force that attempts to reach our target velocity
-        Vector3 velocity = rb.linearVelocity;
-        Vector3 velocityChange = (targetVelocity - velocity);
-        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-        velocityChange.y = 0;
+      
         isSlide = true;
         // isSlide = true;
-        rb.AddForce(velocityChange * slideSpeed * -1, ForceMode.Impulse);
+        rb.AddForce(moveDirection * slideSpeed, ForceMode.Impulse);
         slideAnim.SetTrigger("Slide");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.35f);
         anim.SetBool("Slide", false);
 
         isSlide = false;
@@ -354,6 +351,7 @@ public class FirstPersonController : MonoBehaviour
         // Adds force to the player rigidbody to jump
         if (jumpCount > 0)
         {
+            StartCoroutine(JumpingReload());
             jumpCount --;
             isSlide = false;
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
@@ -366,7 +364,12 @@ public class FirstPersonController : MonoBehaviour
         // When crouched and using toggle system, will uncrouch for a jump
        
     }
-
+    IEnumerator JumpingReload()
+    {
+        isJumping = true;
+        yield return new WaitForSeconds(0.3f);
+        isJumping = false;
+    }
    
 
     private void HeadBob()
