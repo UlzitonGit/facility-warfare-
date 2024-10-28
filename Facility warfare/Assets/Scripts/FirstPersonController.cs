@@ -288,6 +288,8 @@ public class FirstPersonController : MonoBehaviour
         if (isSlide == true) return;
         moveDirection = orientation.forward * verInput + orientation.right * horInput;
         moveDirection = moveDirection.normalized * walkSpeed;
+        anim.SetFloat("Horizontal", moveDirection.z);
+        anim.SetFloat("Vertical", moveDirection.x);
         rb.linearVelocity = new Vector3(moveDirection.x, rb.linearVelocity.y, moveDirection.z ) ;
        
        

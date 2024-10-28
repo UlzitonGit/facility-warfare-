@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] TextMeshProUGUI hpText;
     [SerializeField] GameObject ragdoll;
     [SerializeField] GameObject part;
+    [SerializeField] GameObject player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [PunRPC]
     public void TakeDamage(float damage)
@@ -23,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 PhotonNetwork.Instantiate(ragdoll.name, transform.position, Quaternion.identity);
                 RoomMananger._instance.ChooseLoadOut();
-                PhotonNetwork.Destroy(gameObject);
+                PhotonNetwork.Destroy(player);
             }
            
         }
