@@ -108,7 +108,7 @@ public class SwayAbdBob : MonoBehaviour
 
     void BobOffset()
     {
-
+        if (firstPersonController == null) return;
         speedCurve += Time.deltaTime * (firstPersonController.isGrounded == true ? rb.linearVelocity.magnitude : 1f) + 0.01f;
         if(rb.linearVelocity.magnitude == 0) return;
         bobPosition.x = (curveCos * bobLimit.x * (firstPersonController.isGrounded == true ? 1 : 0)) - (walkInput.x * travelLimit.x);
