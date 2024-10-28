@@ -42,7 +42,8 @@ public class PlayerCamera : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
         transform.rotation = Quaternion.Euler( new Vector3 (xRotation, yRotation, 0) + currentRotation);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        if(orientation != null) orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+
     }
     public void RecoilFire()
     {

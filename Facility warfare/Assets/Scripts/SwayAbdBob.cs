@@ -40,9 +40,9 @@ public class SwayAbdBob : MonoBehaviour
 
         lookInput.x = Input.GetAxis("Mouse X");
         lookInput.y = Input.GetAxis("Mouse Y"); 
+        if(rb != null) Yspeed = rb.linearVelocity.y;
 
-        Yspeed = rb.linearVelocity.y;
-        
+
     }
 
     public float step = 0.01f;
