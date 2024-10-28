@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
         PhotonNetwork.Instantiate(part.name, transform.position, Quaternion.identity);
         if(health <= 0)
         {
-            int loadout = GetComponent<PlayerSetup>().loaduot;
+            int loadout = GetComponentInParent<PlayerSetup>().loaduot;
             if(isLocalPlayer)
             {
                 PhotonNetwork.Instantiate(ragdoll.name, transform.position, Quaternion.identity);
