@@ -4302,7 +4302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4d583bbfe26c9488cfb19302aac519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenShots: 0.08
+  delayBetweenShots: 0.12
   reloadTime: 3
   damage: 50
   maxAmmo: 15
