@@ -4302,7 +4302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4d583bbfe26c9488cfb19302aac519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenShots: 0.16
+  delayBetweenShots: 0.08
   reloadTime: 3
   damage: 50
   maxAmmo: 15
@@ -4429,7 +4429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AudioSource: {fileID: 7733757336349929144}
-  AkShoot: {fileID: 8300000, guid: ce42ee8d118241d4591d7dedb6a87ccd, type: 3}
+  AkShoot: {fileID: 8300000, guid: c23f640d96a83bd4d8ff451a95d58a2c, type: 3}
 --- !u!82 &2016223427922521979
 AudioSource:
   m_ObjectHideFlags: 0
