@@ -69,9 +69,9 @@ public class RoomMananger : MonoBehaviourPunCallbacks
     {
         loadingScreen.SetActive(false);
         GameObject _player = PhotonNetwork.Instantiate(player.name, spp[Random.Range(0, spp.Length)].position, Quaternion.identity);
-        _player.GetComponent<PlayerSetup>().IsLocalPlayer(loadout);
-        _player.GetComponent<PlayerHealth>().isLocalPlayer = true;
+        _player.GetComponentInParent<PlayerSetup>().IsLocalPlayer(loadout);
+        _player.GetComponentInChildren<PlayerHealth>().isLocalPlayer = true;
         
-        _player.GetComponent<PhotonView>().RPC("SetNickname", RpcTarget.AllBuffered, nickname);
+        _player.GetComponentInParent<PhotonView>().RPC("SetNickname", RpcTarget.AllBuffered, nickname);
     }
 }

@@ -4275,10 +4275,12 @@ MonoBehaviour:
   QE: {fileID: 8274780811662324897}
   anim: {fileID: 2019856357892384099}
   cameraLerp: {fileID: 8601889074490226467}
+  orientation: {fileID: 0}
   lockCursor: 1
   crosshair: 1
   crosshairImage: {fileID: 0}
   crosshairColor: {r: 1, g: 1, b: 1, a: 1}
+  groundDrag: 5
   enableZoom: 0
   holdToZoom: 0
   zoomKey: 324
@@ -4313,7 +4315,7 @@ MonoBehaviour:
   crouchHeight: 0.75
   speedReduction: 0.5
   graphic: {fileID: 0}
-  enableHeadBob: 1
+  enableHeadBob: 0
   joint: {fileID: 743043798901309061}
   bobSpeed: 10
   bobAmount: {x: 0.15, y: 0.05, z: 0}

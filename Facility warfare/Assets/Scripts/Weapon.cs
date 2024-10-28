@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
     public bool isSemiAiming = false;
     bool isReloading = false;
     private bool canShoot = true;
-    [SerializeField] Recoil recoilScriptCamera;
+    [SerializeField] PlayerCamera recoilScriptCamera;
     [SerializeField] Recoil recoilScriptWeapon;
    // [SerializeField] Vector3 aimRot;
     [SerializeField] Vector3 aimPos;
