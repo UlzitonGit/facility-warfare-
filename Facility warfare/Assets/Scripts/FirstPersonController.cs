@@ -308,7 +308,7 @@ public class FirstPersonController : MonoBehaviour
             Debug.DrawRay(origin, direction * distance, Color.red);
             isGrounded = true;
             if(isJumping == false)
-                jumpCount = 2;
+                jumpCount = 1;
            
         }
         else

@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private ParticleSystem hitEffect;
     [SerializeField] AudioClip hitSfx;
     [SerializeField] AudioSource aud;
+    [SerializeField] GameObject crosshair;
     [SerializeField] private Animator weaponAnimation;
     [SerializeField] LayerMask toIgnore;
     [SerializeField] float aimSmooth = 0.000000000001f;
@@ -34,6 +35,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Quaternion semiAimRot;
     [SerializeField] Vector3 armPos;
     [SerializeField] GameObject hitmarker;
+    [SerializeField] Vector3 startPos;
     float delayWeapon = 0.1f;
     bool delaying = false;
     bool aimSwitch = true;
@@ -56,6 +58,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (Input.GetKey(KeyCode.R) && isReloading == false)
         {
             StartCoroutine(Reload());
@@ -73,20 +76,23 @@ public class Weapon : MonoBehaviour
         {
             if (!isSemiAiming)
             {
+                crosshair.SetActive(false);
                 transform.localPosition = Vector3.Slerp(transform.localPosition, aimPos, Time.deltaTime * aimSmooth);
-                transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 0)), Time.deltaTime * aimSmooth);
+                transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(startPos), Time.deltaTime * aimSmooth);
             }
             if (isSemiAiming)
             {
+                crosshair.SetActive(true);
                 transform.localPosition = Vector3.Slerp(transform.localPosition, semiAimPos, Time.deltaTime * aimSmooth);
                 transform.localRotation = Quaternion.Slerp(transform.localRotation, semiAimRot, Time.deltaTime * aimSmooth) ;
             }
             isAiming = true;
         }
+        if(isAiming == false) crosshair.SetActive(true);
         if (!Input.GetKey(KeyCode.Mouse1) && isReloading == false)
         {
             transform.localPosition = Vector3.Slerp(transform.localPosition, armPos, Time.deltaTime * aimSmooth);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(new Vector3 (0,0,0)), Time.deltaTime * aimSmooth);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(startPos), Time.deltaTime * aimSmooth);
             isAiming = false;
         }
     }
