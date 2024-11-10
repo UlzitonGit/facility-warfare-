@@ -2483,9 +2483,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 5362496560824371710}
-  recoilX: -0.5
-  recoilY: 3
-  recoilZ: 2
+  recoilX: -0.1
+  recoilY: 1
+  recoilZ: 0.5
   snappiness: 25
   returnSpeed: 5
 --- !u!1 &4432170547308290670
