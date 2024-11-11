@@ -7,6 +7,7 @@ public class ReloadSounds : MonoBehaviour
     [SerializeField] AudioClip inMag;
     [SerializeField] AudioClip slider;
     [SerializeField] AudioClip magDrop;
+    [SerializeField] AudioClip shellIn;
     public void MagIN()
     {
         aud.PlayOneShot(inMag);
@@ -22,5 +23,9 @@ public class ReloadSounds : MonoBehaviour
     public void MagDrop()
     {
         aud.PlayOneShot(magDrop);
+    }
+    public void ShellIn()
+    {
+        aud.PlayOneShot(shellIn);
     }
 }

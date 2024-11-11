@@ -4812,7 +4812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBetweenShots: 1
-  reloadTime: 3
+  reloadTime: 5
   damage: 15
   maxAmmo: 7
   shootPoint: {fileID: 3644114274823205264}
@@ -7661,6 +7661,7 @@ MonoBehaviour:
   inMag: {fileID: 8300000, guid: 92e7df30672f549429159b0eef85c7f6, type: 3}
   slider: {fileID: 8300000, guid: 90fd9982c3290204386c9e00cd20cffa, type: 3}
   magDrop: {fileID: 8300000, guid: 21fd185fa01230d4b97129995acbb26f, type: 3}
+  shellIn: {fileID: 0}
 --- !u!95 &7799474046219630942
 Animator:
   serializedVersion: 7
@@ -13926,6 +13927,7 @@ MonoBehaviour:
   inMag: {fileID: 8300000, guid: 92e7df30672f549429159b0eef85c7f6, type: 3}
   slider: {fileID: 8300000, guid: 90fd9982c3290204386c9e00cd20cffa, type: 3}
   magDrop: {fileID: 8300000, guid: 21fd185fa01230d4b97129995acbb26f, type: 3}
+  shellIn: {fileID: 0}
 --- !u!95 &2381386466263836401
 Animator:
   serializedVersion: 7
@@ -15884,6 +15886,7 @@ MonoBehaviour:
   inMag: {fileID: 8300000, guid: 92e7df30672f549429159b0eef85c7f6, type: 3}
   slider: {fileID: 8300000, guid: 90fd9982c3290204386c9e00cd20cffa, type: 3}
   magDrop: {fileID: 8300000, guid: 21fd185fa01230d4b97129995acbb26f, type: 3}
+  shellIn: {fileID: 0}
 --- !u!4 &6351482807357908377 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 029fac8547b4c494ebad42a74ad36beb, type: 3}
@@ -16151,6 +16154,7 @@ MonoBehaviour:
   inMag: {fileID: 8300000, guid: 92e7df30672f549429159b0eef85c7f6, type: 3}
   slider: {fileID: 8300000, guid: 90fd9982c3290204386c9e00cd20cffa, type: 3}
   magDrop: {fileID: 8300000, guid: 21fd185fa01230d4b97129995acbb26f, type: 3}
+  shellIn: {fileID: 8300000, guid: 878a07037d091ec44ad4a3290f1d38fe, type: 3}
 --- !u!95 &5305310972924517460
 Animator:
   serializedVersion: 7
@@ -16552,6 +16556,7 @@ MonoBehaviour:
   inMag: {fileID: 8300000, guid: 92e7df30672f549429159b0eef85c7f6, type: 3}
   slider: {fileID: 8300000, guid: 90fd9982c3290204386c9e00cd20cffa, type: 3}
   magDrop: {fileID: 8300000, guid: 21fd185fa01230d4b97129995acbb26f, type: 3}
+  shellIn: {fileID: 0}
 --- !u!4 &9138780657092060921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 029fac8547b4c494ebad42a74ad36beb, type: 3}
