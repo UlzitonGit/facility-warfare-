@@ -1625,7 +1625,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -5568,10 +5568,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4d583bbfe26c9488cfb19302aac519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenShots: 0.12
+  delayBetweenShots: 0.1
   reloadTime: 3
-  damage: 50
-  maxAmmo: 15
+  damage: 40
+  maxAmmo: 20
   shootPoint: {fileID: 8070459690427234224}
   shootKey: 323
   muzzleFireEffect: {fileID: 2512860623574995014}
@@ -5937,9 +5937,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 3565531539568089711}
-  recoilX: -2
-  recoilY: 5
-  recoilZ: 3
+  recoilX: -1
+  recoilY: 3
+  recoilZ: 1
   snappiness: 10
   returnSpeed: 5
 --- !u!1 &7699225132368715707
@@ -11902,6 +11902,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7bffda163a45a224bb881ff7240d75a0, type: 3}
       propertyPath: m_Name
       value: scope
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202271454713460447, guid: 7bffda163a45a224bb881ff7240d75a0, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
