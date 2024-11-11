@@ -197,12 +197,14 @@ MonoBehaviour:
   hitEffect: {fileID: 354063401412810027, guid: 26aa9042e4bfd284aad8b8e3e253395a, type: 3}
   hitSfx: {fileID: 8300000, guid: da3b389d1c085e04c83a3f4926dff22d, type: 3}
   aud: {fileID: 3511308295928518313}
+  crosshair: {fileID: 0}
   weaponAnimation: {fileID: 5678275204715617561}
   toIgnore:
     serializedVersion: 2
     m_Bits: 4
   aimSmooth: 10
   _photonSoundMananger: {fileID: 5406946899077117808}
+  isShotgun: 0
   isAiming: 0
   isSemiAiming: 0
   recoilScriptCamera: {fileID: 0}
@@ -212,6 +214,7 @@ MonoBehaviour:
   semiAimRot: {x: 0, y: 0, z: 0.25240713, w: 0.96762115}
   armPos: {x: 0, y: 0.01, z: 0}
   hitmarker: {fileID: 2602413343892981626}
+  startPos: {x: 0, y: 0, z: 0}
   delayedShootRate: 0.018
   ammoText: {fileID: 8492122304514786969}
 --- !u!65 &8610423387369255008
@@ -1564,12 +1567,14 @@ MonoBehaviour:
   hitEffect: {fileID: 354063401412810027, guid: 26aa9042e4bfd284aad8b8e3e253395a, type: 3}
   hitSfx: {fileID: 8300000, guid: da3b389d1c085e04c83a3f4926dff22d, type: 3}
   aud: {fileID: 8153463610159628611}
+  crosshair: {fileID: 0}
   weaponAnimation: {fileID: 287217980094481078}
   toIgnore:
     serializedVersion: 2
     m_Bits: 4
   aimSmooth: 10
   _photonSoundMananger: {fileID: 4780789097207936989}
+  isShotgun: 0
   isAiming: 0
   isSemiAiming: 0
   recoilScriptCamera: {fileID: 0}
@@ -1579,6 +1584,7 @@ MonoBehaviour:
   semiAimRot: {x: 0, y: 0, z: 0.25240713, w: 0.96762115}
   armPos: {x: 0, y: 0.01, z: 0}
   hitmarker: {fileID: 2602413343892981626}
+  startPos: {x: 0, y: 0, z: 0}
   delayedShootRate: 0.018
   ammoText: {fileID: 634092067439621621}
 --- !u!65 &2911206373495325696
@@ -3414,12 +3420,14 @@ MonoBehaviour:
   hitEffect: {fileID: 354063401412810027, guid: 26aa9042e4bfd284aad8b8e3e253395a, type: 3}
   hitSfx: {fileID: 8300000, guid: da3b389d1c085e04c83a3f4926dff22d, type: 3}
   aud: {fileID: 7011695303577635470}
+  crosshair: {fileID: 0}
   weaponAnimation: {fileID: 1522624424278023304}
   toIgnore:
     serializedVersion: 2
     m_Bits: 4
   aimSmooth: 5
   _photonSoundMananger: {fileID: 5962767324359777138}
+  isShotgun: 0
   isAiming: 0
   isSemiAiming: 0
   recoilScriptCamera: {fileID: 0}
@@ -3429,6 +3437,7 @@ MonoBehaviour:
   semiAimRot: {x: 0, y: 0, z: 0.25240713, w: 0.96762115}
   armPos: {x: 0, y: 0.01, z: 0}
   hitmarker: {fileID: 2602413343892981626}
+  startPos: {x: 0, y: 0, z: 0}
   delayedShootRate: 0.018
   ammoText: {fileID: 5108142832557031137}
 --- !u!65 &3402684403632937960
@@ -4442,6 +4451,7 @@ MonoBehaviour:
   hpText: {fileID: 3019174895115188920}
   ragdoll: {fileID: 1241593633303044467, guid: 0dc9f143f911a2646b92ad1bfeb777ea, type: 3}
   part: {fileID: 282666493630896490, guid: 07ef80d3ee6b0b64eb37285fff504c81, type: 3}
+  player: {fileID: 0}
 --- !u!82 &5306320317315173119
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5526,12 +5536,14 @@ MonoBehaviour:
   hitEffect: {fileID: 354063401412810027, guid: 26aa9042e4bfd284aad8b8e3e253395a, type: 3}
   hitSfx: {fileID: 8300000, guid: da3b389d1c085e04c83a3f4926dff22d, type: 3}
   aud: {fileID: 4110403149323520828}
+  crosshair: {fileID: 0}
   weaponAnimation: {fileID: 4656415287190412380}
   toIgnore:
     serializedVersion: 2
     m_Bits: 4
   aimSmooth: 5
   _photonSoundMananger: {fileID: 2145726552193646158}
+  isShotgun: 0
   isAiming: 0
   isSemiAiming: 0
   recoilScriptCamera: {fileID: 0}
@@ -5541,6 +5553,7 @@ MonoBehaviour:
   semiAimRot: {x: 0, y: 0, z: 0.25240713, w: 0.96762115}
   armPos: {x: 0, y: 0.01, z: 0}
   hitmarker: {fileID: 2602413343892981626}
+  startPos: {x: 0, y: 0, z: 0}
   delayedShootRate: 0.018
   ammoText: {fileID: 5393726571993472524}
 --- !u!65 &3483377834927572123
@@ -8235,6 +8248,7 @@ MonoBehaviour:
   inMag: {fileID: 8300000, guid: 92e7df30672f549429159b0eef85c7f6, type: 3}
   slider: {fileID: 8300000, guid: 90fd9982c3290204386c9e00cd20cffa, type: 3}
   magDrop: {fileID: 8300000, guid: 21fd185fa01230d4b97129995acbb26f, type: 3}
+  shellIn: {fileID: 0}
 --- !u!95 &5678275204715617561
 Animator:
   serializedVersion: 7
@@ -11056,6 +11070,7 @@ MonoBehaviour:
   inMag: {fileID: 8300000, guid: 92e7df30672f549429159b0eef85c7f6, type: 3}
   slider: {fileID: 8300000, guid: 90fd9982c3290204386c9e00cd20cffa, type: 3}
   magDrop: {fileID: 8300000, guid: 21fd185fa01230d4b97129995acbb26f, type: 3}
+  shellIn: {fileID: 0}
 --- !u!4 &6639288754212815550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 029fac8547b4c494ebad42a74ad36beb, type: 3}
@@ -12043,6 +12058,7 @@ MonoBehaviour:
   inMag: {fileID: 8300000, guid: 92e7df30672f549429159b0eef85c7f6, type: 3}
   slider: {fileID: 8300000, guid: 90fd9982c3290204386c9e00cd20cffa, type: 3}
   magDrop: {fileID: 8300000, guid: 21fd185fa01230d4b97129995acbb26f, type: 3}
+  shellIn: {fileID: 0}
 --- !u!95 &287217980094481078
 Animator:
   serializedVersion: 7
@@ -13442,6 +13458,7 @@ MonoBehaviour:
   inMag: {fileID: 8300000, guid: 92e7df30672f549429159b0eef85c7f6, type: 3}
   slider: {fileID: 8300000, guid: 90fd9982c3290204386c9e00cd20cffa, type: 3}
   magDrop: {fileID: 8300000, guid: 21fd185fa01230d4b97129995acbb26f, type: 3}
+  shellIn: {fileID: 0}
 --- !u!4 &8850974675474743774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 029fac8547b4c494ebad42a74ad36beb, type: 3}

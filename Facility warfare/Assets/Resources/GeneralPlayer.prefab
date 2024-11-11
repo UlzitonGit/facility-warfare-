@@ -4813,7 +4813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBetweenShots: 1
   reloadTime: 5
-  damage: 15
+  damage: 22
   maxAmmo: 7
   shootPoint: {fileID: 3644114274823205264}
   shootKey: 323
