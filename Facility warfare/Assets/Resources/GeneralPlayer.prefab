@@ -68,6 +68,7 @@ MonoBehaviour:
     m_Bits: 4
   aimSmooth: 10
   _photonSoundMananger: {fileID: 6965031495775064986}
+  isShotgun: 0
   isAiming: 0
   isSemiAiming: 0
   recoilScriptCamera: {fileID: 4480082563707148675}
@@ -1279,12 +1280,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141052189220403253}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.044, y: 0.025, z: 1.801}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0.006, y: 0.65, z: -1.531}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7150472505872887389}
+  m_Father: {fileID: 963692638132545756}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2542806590895377980
 GameObject:
@@ -1659,6 +1660,7 @@ MonoBehaviour:
     m_Bits: 4
   aimSmooth: 10
   _photonSoundMananger: {fileID: 7636223609686659895}
+  isShotgun: 0
   isAiming: 0
   isSemiAiming: 0
   recoilScriptCamera: {fileID: 4480082563707148675}
@@ -4725,7 +4727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBetweenShots: 1
   reloadTime: 3
-  damage: 50
+  damage: 15
   maxAmmo: 7
   shootPoint: {fileID: 3644114274823205264}
   shootKey: 323
@@ -4740,16 +4742,17 @@ MonoBehaviour:
     m_Bits: 4
   aimSmooth: 10
   _photonSoundMananger: {fileID: 1576514920338041998}
+  isShotgun: 1
   isAiming: 0
   isSemiAiming: 0
   recoilScriptCamera: {fileID: 4480082563707148675}
   recoilScriptWeapon: {fileID: 7117085291902682468}
-  aimPos: {x: -0.13, y: 0.01, z: -0.1}
-  semiAimPos: {x: -0.3, y: -0.1, z: -0.1}
-  semiAimRot: {x: 0.007903944, y: 0.02949794, z: 0.25869817, w: 0.9654754}
+  aimPos: {x: -0.075, y: 0.1, z: 0.02}
+  semiAimPos: {x: -0.2, y: -0.1, z: -0.1}
+  semiAimRot: {x: 0.0045170244, y: 0.01685778, z: -0.25877938, w: -0.96577877}
   armPos: {x: 0, y: 0.05, z: 0.03}
   hitmarker: {fileID: 499235734923600701}
-  startPos: {x: -0.94, y: -5.36, z: 0}
+  startPos: {x: 0.93, y: -4.66, z: 0}
   delayedShootRate: 0.018
   ammoText: {fileID: 91461161051030569}
 --- !u!65 &5850431999837774527
@@ -5496,6 +5499,7 @@ MonoBehaviour:
     m_Bits: 4
   aimSmooth: 5
   _photonSoundMananger: {fileID: 4555148627321231881}
+  isShotgun: 0
   isAiming: 0
   isSemiAiming: 0
   recoilScriptCamera: {fileID: 4480082563707148675}
@@ -6738,6 +6742,7 @@ MonoBehaviour:
     m_Bits: 4
   aimSmooth: 5
   _photonSoundMananger: {fileID: 8083965928908422965}
+  isShotgun: 0
   isAiming: 0
   isSemiAiming: 0
   recoilScriptCamera: {fileID: 4480082563707148675}
@@ -7670,6 +7675,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a79e99b5a5949d43a52f325f4b221d9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1507910753693231444}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a79e99b5a5949d43a52f325f4b221d9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3644114274823205264}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a79e99b5a5949d43a52f325f4b221d9, type: 3}
 --- !u!4 &963692638132545756 stripped
@@ -8647,15 +8655,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c192935bbb672444ac66e464e598e31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6547261
+      value: -0.648
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c192935bbb672444ac66e464e598e31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.85502476
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c192935bbb672444ac66e464e598e31, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.7490983
+      value: 3.828
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c192935bbb672444ac66e464e598e31, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16010,9 +16018,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 029fac8547b4c494ebad42a74ad36beb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5847229360226849608}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 029fac8547b4c494ebad42a74ad36beb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3644114274823205264}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 029fac8547b4c494ebad42a74ad36beb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 963692638132545756}

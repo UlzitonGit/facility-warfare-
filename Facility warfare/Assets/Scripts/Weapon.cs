@@ -22,7 +22,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] float aimSmooth = 0.000000000001f;
     [SerializeField] PhotonSoundMananger _photonSoundMananger;
     private int ammo = 0;
-   
+    [SerializeField] bool isShotgun = false;
     public bool isAiming = false;
     public bool isSemiAiming = false;
     bool isReloading = false;
@@ -120,10 +120,17 @@ public class Weapon : MonoBehaviour
         recoilScriptWeapon.RecoilFire();
         ammoText.text = "ammo: " + ammo.ToString();
         RaycastHit hit;
-        if(Physics.Raycast(shootPoint.transform.position, shootPoint.transform.forward, out hit))
+        if(isShotgun == true)
+        {
+            ShootgunShoot();
+            return;
+        }
+       
+        if (ammo == 0) StartCoroutine(Reload());
+        if (Physics.Raycast(shootPoint.transform.position, shootPoint.transform.forward, out hit))
         {
             Debug.Log(hit.transform.name);
-            if(hit.transform.GetComponent<Destroyable>() != null )
+            if (hit.transform.GetComponent<Destroyable>() != null)
             {
                 hit.transform.GetComponent<Destroyable>().Destory();
             }
@@ -137,9 +144,34 @@ public class Weapon : MonoBehaviour
             else PhotonNetwork.Instantiate(hitEffect.name, hit.point, Quaternion.LookRotation(hit.normal));
 
         }
-        if (ammo == 0) StartCoroutine(Reload());
     }
+    private void ShootgunShoot()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            RaycastHit hit;
+            shootPoint.transform.localRotation = Quaternion.Euler(new Vector3(Random.Range(-5, 5), Random.Range(176, 184), 0));
+            if (Physics.Raycast(shootPoint.transform.position, shootPoint.transform.forward, out hit))
+            {
+                Debug.Log(hit.transform.name);
+                if (hit.transform.GetComponent<Destroyable>() != null)
+                {
+                    hit.transform.GetComponent<Destroyable>().Destory();
+                }
+                if (hit.transform.GetComponent<PlayerHealth>())
+                {
+                    float currentDamage = damage;
+                    hit.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, currentDamage);
+                    aud.PlayOneShot(hitSfx);
+                    StartCoroutine(Hitmarker());
+                }
+                else PhotonNetwork.Instantiate(hitEffect.name, hit.point, Quaternion.LookRotation(hit.normal));
+                
+            }
+        }
+        if (ammo == 0) StartCoroutine(Reload());
 
+    }
     private IEnumerator Hitmarker()
     {
         hitmarker.SetActive(true);
