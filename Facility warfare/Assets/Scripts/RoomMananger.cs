@@ -10,7 +10,7 @@ public class RoomMananger : MonoBehaviourPunCallbacks
     [SerializeField] GameObject joinButton;
     [SerializeField] GameObject load;
     [SerializeField] GameObject namePicker;
-    
+    int weaponID = 0;
     private string nickname = "Player";
     private void Awake()
     {
@@ -18,21 +18,18 @@ public class RoomMananger : MonoBehaviourPunCallbacks
         load.SetActive(false);
     }
 
-    public void ChangeNickname (string _name)
-    {
-        nickname = _name;
-    }
-
-    public void JoinRoomButtonPressed()
+   
+    private void Start()
     {
         Debug.Log("Connecting....");
         Debug.Log(nickname);
         PhotonNetwork.ConnectUsingSettings();
-        
+        weaponID = PlayerPrefs.GetInt("weapon");
         joinButton.SetActive(false);
         load.SetActive(true);
         namePicker.SetActive(false);
     }
+   
 
     public override void OnConnectedToMaster()
     {
@@ -50,20 +47,10 @@ public class RoomMananger : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        ChooseLoadOut();
-        
+        RespawnPlayer(weaponID);
     }
-    public void ChooseLoadOut()
-    {
-       
-        Cursor.lockState = CursorLockMode.None;        
-        Cursor.visible = true;
-        loadingScreen.SetActive(true);
-        for (int i = 0; i < loadouts.Length; i++)
-        {
-            loadouts[i].SetActive(true);
-        }
-    }
+   
+    
    
     public void RespawnPlayer(int loadout)
     {
