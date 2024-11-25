@@ -2234,6 +2234,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3318572393535406190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4128447801734070731}
+  m_Layer: 7
+  m_Name: TossablesAttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4128447801734070731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3318572393535406190}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.249, y: -0.087, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 998973148607476546}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3394969280173976145
 GameObject:
   m_ObjectHideFlags: 0
@@ -5074,6 +5105,7 @@ Transform:
   m_Children:
   - {fileID: 3326270378160564892}
   - {fileID: 5607183875204114724}
+  - {fileID: 4128447801734070731}
   m_Father: {fileID: 822895659298116752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7877505718962022125
@@ -6296,6 +6328,7 @@ GameObject:
   - component: {fileID: 572583622946858631}
   - component: {fileID: 3262605669936843259}
   - component: {fileID: 8366087111183818686}
+  - component: {fileID: -1390178334990865732}
   m_Layer: 0
   m_Name: GeneralPlayer
   m_TagString: Untagged
@@ -6366,6 +6399,26 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-1390178334990865732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8003098735892350255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3abe0dfa5d0b8b14cb7e9f4413c5a43d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 998973148607476546}
+  attackPoint: {fileID: 4128447801734070731}
+  objectToThrow: {fileID: 3370322838306234781, guid: 46c7d2f8923b5ab4da158a0d7180c97a, type: 3}
+  totalThrows: 3
+  throwCooldown: 3
+  throwKey: 103
+  throwForce: 20
+  throwUpwardForce: 7
 --- !u!1 &8045842489573298998
 GameObject:
   m_ObjectHideFlags: 0
