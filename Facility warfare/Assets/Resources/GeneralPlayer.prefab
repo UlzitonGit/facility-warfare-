@@ -1729,7 +1729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4d583bbfe26c9488cfb19302aac519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenShots: 0.05
+  delayBetweenShots: 0.04
   reloadTime: 3
   damage: 27
   maxAmmo: 45
@@ -5278,9 +5278,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 7695158948839766049}
-  recoilX: -5
-  recoilY: 3
-  recoilZ: 3
+  recoilX: -3
+  recoilY: 1
+  recoilZ: 1
   snappiness: 50
   returnSpeed: 5
 --- !u!1 &6335858977237331986
@@ -5600,10 +5600,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4d583bbfe26c9488cfb19302aac519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenShots: 0.1
+  delayBetweenShots: 0.065
   reloadTime: 3
-  damage: 40
-  maxAmmo: 20
+  damage: 30
+  maxAmmo: 30
   shootPoint: {fileID: 8070459690427234224}
   shootKey: 323
   muzzleFireEffect: {fileID: 2512860623574995014}
@@ -5969,9 +5969,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 3565531539568089711}
-  recoilX: -1
-  recoilY: 3
-  recoilZ: 1
+  recoilX: -0.2
+  recoilY: 1
+  recoilZ: 0.3
   snappiness: 10
   returnSpeed: 5
 --- !u!1 &7699225132368715707
