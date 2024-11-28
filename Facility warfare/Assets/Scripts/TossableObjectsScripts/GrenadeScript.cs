@@ -27,10 +27,10 @@ public class GrenadeScript : MonoBehaviour
 
         foreach (Collider nearbyObject in colliders)
         {
-            PhotonView player = nearbyObject.GetComponent<PhotonView>();
+            PlayerHealth player = nearbyObject.GetComponent<PlayerHealth>();
             if (player != null)
             {
-                player.RPC("TakeDamage", RpcTarget.All, damage);
+                player.transform.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, damage);
             }
         }
         Debug.Log("1");
