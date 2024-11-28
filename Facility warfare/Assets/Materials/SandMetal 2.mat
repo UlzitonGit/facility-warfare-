@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: fe50e38b0c8233242bb2daf303d8e592, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D_1:
@@ -65,12 +65,14 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Shades: 2
+    - _Shades: 0.96
+    - _TextureScale: 3
     - _max: 1.61
     - _min: 0.3
     - _outline: 1
     - _scale: -6.7
     m_Colors:
-    - _Color: {r: 0.5996351, g: 0.7264151, b: 0.62196004, a: 0}
+    - _Color: {r: 0.42212528, g: 0.5849056, b: 0.44925535, a: 0}
+    - _Scale: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
